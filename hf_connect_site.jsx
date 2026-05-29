@@ -1,102 +1,53 @@
-import React from "react";
-import { motion } from "framer-motion";
-import {
-  Wifi,
-  Camera,
-  Satellite,
-  Network,
-  ShieldCheck,
-  Cable,
-  Phone,
-  MapPin,
-  CheckCircle2,
-  ArrowRight,
-  Router,
-  Wrench,
-  Server,
-  HouseWifi,
-  Building2,
-  Tractor,
-  Clock3,
-  MessageCircle,
-  Sparkles,
-  RadioTower,
-  LockKeyhole,
-  Gauge,
-  ClipboardCheck,
-  ChevronRight,
-  Star,
-} from "lucide-react";
-import { Card, CardContent } from "@/components/ui/card";
-import { Button } from "@/components/ui/button";
+import { useState, useEffect, useRef } from "react";
+import { motion, useInView } from "framer-motion";
 
-const whatsappNumber = "5534999999999"; // Troque pelo número real da HF Connect. Exemplo: 5534991234567
-const whatsappMessage = encodeURIComponent(
-  "Olá! Vim pelo site da HF Connect e quero solicitar um orçamento."
-);
+const whatsappNumber = "5534999999999";
+const whatsappMessage = encodeURIComponent("Olá! Vim pelo site da HF Connect e quero solicitar um orçamento.");
 const whatsappLink = `https://wa.me/${whatsappNumber}?text=${whatsappMessage}`;
 
 const services = [
   {
-    icon: Cable,
+    emoji: "🔵",
     title: "Fibra Óptica",
-    description:
-      "Fusão, conectorização, testes, passagem de cabo, organização de caixas e manutenção de enlaces ópticos.",
+    description: "Fusão, conectorização, testes, passagem de cabo, organização de caixas e manutenção de enlaces ópticos.",
     points: ["Fusão de fibra", "Power meter", "Organização de rede"],
   },
   {
-    icon: Camera,
+    emoji: "📷",
     title: "Câmeras e CFTV",
-    description:
-      "Projetos com câmeras Intelbras e similares, DVR/NVR, acesso remoto, cabeamento e posicionamento inteligente.",
+    description: "Projetos com câmeras Intelbras e similares, DVR/NVR, acesso remoto, cabeamento e posicionamento inteligente.",
     points: ["Acesso pelo celular", "CFTV residencial", "CFTV empresarial"],
   },
   {
-    icon: Satellite,
+    emoji: "🛰️",
     title: "Starlink",
-    description:
-      "Instalação, melhor posicionamento, organização da rede, Wi‑Fi, roteadores e integração com câmeras.",
+    description: "Instalação, melhor posicionamento, organização da rede, Wi‑Fi, roteadores e integração com câmeras.",
     points: ["Casa e fazenda", "Rede estável", "Melhor cobertura"],
   },
   {
-    icon: Wifi,
+    emoji: "📶",
     title: "Wi‑Fi Profissional",
-    description:
-      "Melhoria de sinal, pontos de acesso, roteadores, repetidores, redes mesh e eliminação de áreas sem cobertura.",
-    points: ["Análise de sinal", "Cobertura total", "Rede separada para visitas"],
+    description: "Melhoria de sinal, pontos de acesso, roteadores, repetidores, redes mesh e eliminação de áreas sem cobertura.",
+    points: ["Análise de sinal", "Cobertura total", "Rede para visitas"],
   },
   {
-    icon: Network,
+    emoji: "🔗",
     title: "Redes Cabeadas",
-    description:
-      "Cabeamento estruturado, racks, switches, patch panels, identificação dos pontos e organização técnica.",
+    description: "Cabeamento estruturado, racks, switches, patch panels, identificação dos pontos e organização técnica.",
     points: ["Pontos de rede", "Rack organizado", "Switches e roteadores"],
   },
   {
-    icon: Wrench,
+    emoji: "🔧",
     title: "Suporte Técnico",
-    description:
-      "Diagnóstico de falhas, manutenção preventiva, configuração de equipamentos e orientação para expansão futura.",
+    description: "Diagnóstico de falhas, manutenção preventiva, configuração de equipamentos e orientação para expansão futura.",
     points: ["Diagnóstico rápido", "Correção de falhas", "Manutenção preventiva"],
   },
 ];
 
 const segments = [
-  {
-    icon: HouseWifi,
-    title: "Residências",
-    text: "Internet forte nos cômodos, câmeras no celular e rede organizada para o dia a dia.",
-  },
-  {
-    icon: Building2,
-    title: "Empresas",
-    text: "Estrutura confiável para atendimento, câmeras, computadores, impressoras e sistemas.",
-  },
-  {
-    icon: Tractor,
-    title: "Fazendas e sítios",
-    text: "Starlink, câmeras, Wi‑Fi externo e soluções para monitoramento remoto da propriedade.",
-  },
+  { emoji: "🏠", title: "Residências", text: "Internet forte nos cômodos, câmeras no celular e rede organizada para o dia a dia." },
+  { emoji: "🏢", title: "Empresas", text: "Estrutura confiável para atendimento, câmeras, computadores, impressoras e sistemas." },
+  { emoji: "🚜", title: "Fazendas e sítios", text: "Starlink, câmeras, Wi‑Fi externo e soluções para monitoramento remoto da propriedade." },
 ];
 
 const benefits = [
@@ -109,313 +60,286 @@ const benefits = [
 ];
 
 const process = [
-  {
-    number: "01",
-    title: "Entendimento da necessidade",
-    text: "Você explica o problema ou objetivo: melhorar internet, instalar câmeras, configurar Starlink ou montar uma rede.",
-  },
-  {
-    number: "02",
-    title: "Avaliação técnica",
-    text: "Análise do ambiente, pontos de instalação, cabeamento, sinal, equipamentos existentes e melhor solução.",
-  },
-  {
-    number: "03",
-    title: "Instalação organizada",
-    text: "Execução com cuidado no acabamento, identificação, configuração e testes de funcionamento.",
-  },
-  {
-    number: "04",
-    title: "Entrega e orientação",
-    text: "Você recebe tudo funcionando e entende como acessar, usar e cuidar da estrutura instalada.",
-  },
+  { number: "01", title: "Entendimento da necessidade", text: "Você explica o problema ou objetivo: melhorar internet, instalar câmeras, configurar Starlink ou montar uma rede." },
+  { number: "02", title: "Avaliação técnica", text: "Análise do ambiente, pontos de instalação, cabeamento, sinal, equipamentos existentes e melhor solução." },
+  { number: "03", title: "Instalação organizada", text: "Execução com cuidado no acabamento, identificação, configuração e testes de funcionamento." },
+  { number: "04", title: "Entrega e orientação", text: "Você recebe tudo funcionando e entende como acessar, usar e cuidar da estrutura instalada." },
 ];
 
-const stats = [
-  { label: "Soluções", value: "360°", text: "rede, internet e segurança" },
-  { label: "Atendimento", value: "Rural", text: "casas, empresas e fazendas" },
-  { label: "Foco", value: "Pro", text: "organização e estabilidade" },
-];
-
-const fadeUp = {
-  hidden: { opacity: 0, y: 28 },
-  show: { opacity: 1, y: 0 },
-};
+function FadeUp({ children, delay = 0 }) {
+  const ref = useRef(null);
+  const inView = useInView(ref, { once: true, margin: "-60px" });
+  return (
+    <div ref={ref} style={{
+      opacity: inView ? 1 : 0,
+      transform: inView ? "translateY(0)" : "translateY(28px)",
+      transition: `opacity 0.6s ease ${delay}s, transform 0.6s ease ${delay}s`
+    }}>
+      {children}
+    </div>
+  );
+}
 
 export default function HFConnectSite() {
-  return (
-    <div className="min-h-screen overflow-hidden bg-[#07111f] text-white">
-      <div className="pointer-events-none fixed inset-0 z-0 bg-[radial-gradient(circle_at_20%_10%,rgba(56,189,248,0.18),transparent_28%),radial-gradient(circle_at_80%_0%,rgba(125,211,252,0.15),transparent_24%),radial-gradient(circle_at_50%_100%,rgba(14,165,233,0.12),transparent_32%)]" />
-      <div className="pointer-events-none fixed inset-0 z-0 bg-[linear-gradient(rgba(255,255,255,0.035)_1px,transparent_1px),linear-gradient(90deg,rgba(255,255,255,0.035)_1px,transparent_1px)] bg-[size:64px_64px] [mask-image:linear-gradient(to_bottom,black,transparent_80%)]" />
+  const [scrolled, setScrolled] = useState(false);
+  const [menuOpen, setMenuOpen] = useState(false);
 
-      <header className="sticky top-0 z-50 border-b border-sky-200/10 bg-[#07111f]/75 backdrop-blur-2xl">
-        <div className="mx-auto flex max-w-7xl items-center justify-between px-4 py-4 sm:px-6 lg:px-8">
-          <a href="#topo" className="group flex items-center gap-3">
-            <div className="relative flex h-12 w-12 items-center justify-center rounded-2xl bg-sky-400 text-slate-950 shadow-lg shadow-sky-400/25 transition group-hover:scale-105">
-              <Network className="h-7 w-7" />
-              <span className="absolute -right-1 -top-1 h-3 w-3 rounded-full bg-cyan-200 shadow-[0_0_24px_rgba(125,211,252,1)]" />
+  useEffect(() => {
+    const onScroll = () => setScrolled(window.scrollY > 20);
+    window.addEventListener("scroll", onScroll);
+    return () => window.removeEventListener("scroll", onScroll);
+  }, []);
+
+  return (
+    <div style={{ minHeight: "100vh", background: "#07111f", color: "#fff", fontFamily: "'Segoe UI', system-ui, sans-serif", overflowX: "hidden" }}>
+      {/* Background effects */}
+      <div style={{ position: "fixed", inset: 0, zIndex: 0, pointerEvents: "none", background: "radial-gradient(circle at 20% 10%, rgba(56,189,248,0.18) 0%, transparent 28%), radial-gradient(circle at 80% 0%, rgba(125,211,252,0.15) 0%, transparent 24%), radial-gradient(circle at 50% 100%, rgba(14,165,233,0.12) 0%, transparent 32%)" }} />
+      <div style={{ position: "fixed", inset: 0, zIndex: 0, pointerEvents: "none", backgroundImage: "linear-gradient(rgba(255,255,255,0.03) 1px,transparent 1px),linear-gradient(90deg,rgba(255,255,255,0.03) 1px,transparent 1px)", backgroundSize: "64px 64px", maskImage: "linear-gradient(to bottom, black, transparent 80%)", WebkitMaskImage: "linear-gradient(to bottom, black, transparent 80%)" }} />
+
+      {/* Header */}
+      <header style={{
+        position: "sticky", top: 0, zIndex: 50,
+        borderBottom: "1px solid rgba(186,230,253,0.1)",
+        background: scrolled ? "rgba(7,17,31,0.92)" : "rgba(7,17,31,0.75)",
+        backdropFilter: "blur(24px)",
+        transition: "background 0.3s"
+      }}>
+        <div style={{ maxWidth: 1280, margin: "0 auto", padding: "16px 24px", display: "flex", alignItems: "center", justifyContent: "space-between" }}>
+          <a href="#topo" style={{ display: "flex", alignItems: "center", gap: 12, textDecoration: "none", color: "#fff" }}>
+            <div style={{ width: 48, height: 48, borderRadius: 14, background: "#38bdf8", display: "flex", alignItems: "center", justifyContent: "center", fontSize: 24, boxShadow: "0 0 24px rgba(56,189,248,0.35)" }}>
+              🔗
             </div>
             <div>
-              <p className="text-xl font-black tracking-tight">HF Connect</p>
-              <p className="text-xs font-medium text-sky-200/75">Fibra • Câmeras • Starlink • Wi‑Fi</p>
+              <div style={{ fontSize: 20, fontWeight: 900, letterSpacing: "-0.02em" }}>HF Connect</div>
+              <div style={{ fontSize: 11, color: "rgba(186,230,253,0.7)", fontWeight: 500 }}>Fibra • Câmeras • Starlink • Wi‑Fi</div>
             </div>
           </a>
 
-          <nav className="hidden items-center gap-8 text-sm font-medium text-slate-300 lg:flex">
-            <a href="#servicos" className="hover:text-sky-200">Serviços</a>
-            <a href="#solucoes" className="hover:text-sky-200">Soluções</a>
-            <a href="#processo" className="hover:text-sky-200">Como funciona</a>
-            <a href="#contato" className="hover:text-sky-200">Contato</a>
+          <nav style={{ display: "flex", gap: 32, fontSize: 14, fontWeight: 500, color: "#94a3b8" }}>
+            {["Serviços|#servicos","Soluções|#solucoes","Como funciona|#processo","Contato|#contato"].map(item => {
+              const [label, href] = item.split("|");
+              return <a key={label} href={href} style={{ color: "#94a3b8", textDecoration: "none" }} onMouseOver={e => e.target.style.color="#7dd3fc"} onMouseOut={e => e.target.style.color="#94a3b8"}>{label}</a>;
+            })}
           </nav>
 
-          <Button asChild className="rounded-2xl bg-sky-400 font-bold text-slate-950 shadow-lg shadow-sky-400/20 hover:bg-sky-300">
-            <a href={whatsappLink} target="_blank" rel="noreferrer">
-              Orçamento
-            </a>
-          </Button>
+          <a href={whatsappLink} target="_blank" rel="noreferrer" style={{ background: "#38bdf8", color: "#0f172a", fontWeight: 900, fontSize: 14, padding: "10px 22px", borderRadius: 14, textDecoration: "none", boxShadow: "0 4px 20px rgba(56,189,248,0.25)", transition: "background 0.2s" }} onMouseOver={e => e.currentTarget.style.background="#7dd3fc"} onMouseOut={e => e.currentTarget.style.background="#38bdf8"}>
+            Orçamento
+          </a>
         </div>
       </header>
 
-      <main id="topo" className="relative z-10">
-        <section className="relative px-4 pb-16 pt-14 sm:px-6 lg:px-8 lg:pb-24 lg:pt-20">
-          <div className="mx-auto grid max-w-7xl items-center gap-12 lg:grid-cols-[1.05fr_0.95fr]">
-            <motion.div initial="hidden" animate="show" variants={fadeUp} transition={{ duration: 0.7 }}>
-              <div className="mb-6 inline-flex items-center gap-2 rounded-full border border-sky-300/20 bg-sky-300/10 px-4 py-2 text-sm font-medium text-sky-100 shadow-lg shadow-sky-950/20">
-                <Sparkles className="h-4 w-4 text-sky-300" />
-                Infraestrutura inteligente para internet, rede e segurança
+      <main id="topo" style={{ position: "relative", zIndex: 10 }}>
+        {/* Hero */}
+        <section style={{ padding: "80px 24px 80px", maxWidth: 1280, margin: "0 auto", display: "grid", gridTemplateColumns: "1fr 1fr", gap: 64, alignItems: "center" }}>
+          <div style={{ opacity: 1, transform: "none" }}>
+            <div style={{ display: "inline-flex", alignItems: "center", gap: 8, borderRadius: 999, border: "1px solid rgba(125,211,252,0.2)", background: "rgba(125,211,252,0.1)", padding: "8px 16px", fontSize: 13, fontWeight: 600, color: "#e0f2fe", marginBottom: 24 }}>
+              ✨ Infraestrutura inteligente para internet, rede e segurança
+            </div>
+            <h1 style={{ fontSize: "clamp(2.2rem, 5vw, 4rem)", fontWeight: 900, lineHeight: 1.02, letterSpacing: "-0.03em", marginBottom: 24 }}>
+              Conexão forte, câmeras seguras e rede bem feita.
+            </h1>
+            <p style={{ fontSize: 18, lineHeight: 1.8, color: "#94a3b8", maxWidth: 520, marginBottom: 32 }}>
+              A <strong style={{ color: "#7dd3fc" }}>HF Connect</strong> cuida da sua infraestrutura de ponta a ponta: fibra óptica, Starlink, Wi‑Fi, redes cabeadas e CFTV para casas, empresas e propriedades rurais.
+            </p>
+            <div style={{ display: "flex", gap: 16, flexWrap: "wrap" }}>
+              <a href={whatsappLink} target="_blank" rel="noreferrer" style={{ display: "inline-flex", alignItems: "center", gap: 8, background: "#38bdf8", color: "#0f172a", fontWeight: 900, fontSize: 16, padding: "16px 32px", borderRadius: 16, textDecoration: "none", boxShadow: "0 8px 32px rgba(56,189,248,0.25)" }}>
+                Solicitar orçamento →
+              </a>
+              <a href="#servicos" style={{ display: "inline-flex", alignItems: "center", gap: 8, border: "1px solid rgba(125,211,252,0.2)", background: "rgba(255,255,255,0.05)", color: "#fff", fontWeight: 700, fontSize: 16, padding: "16px 32px", borderRadius: 16, textDecoration: "none" }}>
+                Conhecer serviços
+              </a>
+            </div>
+            <div style={{ display: "grid", gridTemplateColumns: "repeat(3, 1fr)", gap: 12, marginTop: 40, maxWidth: 480 }}>
+              {[{value:"360°",label:"Soluções",text:"rede, internet e segurança"},{value:"Rural",label:"Atendimento",text:"casas, empresas e fazendas"},{value:"Pro",label:"Foco",text:"organização e estabilidade"}].map(s => (
+                <div key={s.label} style={{ borderRadius: 20, border: "1px solid rgba(255,255,255,0.08)", background: "rgba(255,255,255,0.04)", padding: 16, backdropFilter: "blur(8px)" }}>
+                  <div style={{ fontSize: 24, fontWeight: 900, color: "#7dd3fc" }}>{s.value}</div>
+                  <div style={{ fontSize: 10, textTransform: "uppercase", letterSpacing: "0.2em", color: "#64748b", marginTop: 4 }}>{s.label}</div>
+                  <div style={{ fontSize: 12, color: "#94a3b8", marginTop: 8 }}>{s.text}</div>
+                </div>
+              ))}
+            </div>
+          </div>
+
+          {/* Panel card */}
+          <div style={{ borderRadius: 36, border: "1px solid rgba(125,211,252,0.15)", background: "rgba(15,23,42,0.6)", padding: 4, boxShadow: "0 32px 80px rgba(0,0,0,0.5)", backdropFilter: "blur(24px)" }}>
+            <div style={{ borderRadius: 32, border: "1px solid rgba(255,255,255,0.08)", background: "#081827", padding: 24 }}>
+              <div style={{ display: "flex", justifyContent: "space-between", alignItems: "center", marginBottom: 24 }}>
+                <div>
+                  <div style={{ fontSize: 12, color: "#64748b" }}>Painel HF Connect</div>
+                  <div style={{ fontSize: 20, fontWeight: 900 }}>Diagnóstico da estrutura</div>
+                </div>
+                <div style={{ background: "rgba(52,211,153,0.1)", color: "#6ee7b7", fontWeight: 700, fontSize: 13, padding: "8px 14px", borderRadius: 12 }}>● Online</div>
               </div>
-
-              <h1 className="max-w-4xl text-4xl font-black leading-[1.02] tracking-tight sm:text-6xl lg:text-7xl">
-                Conexão forte, câmeras seguras e rede bem feita.
-              </h1>
-
-              <p className="mt-6 max-w-2xl text-lg leading-8 text-slate-300 sm:text-xl">
-                A <strong className="text-sky-200">HF Connect</strong> cuida da sua infraestrutura de ponta a ponta: fibra óptica, Starlink, Wi‑Fi, redes cabeadas e CFTV para casas, empresas e propriedades rurais.
-              </p>
-
-              <div className="mt-8 flex flex-col gap-4 sm:flex-row">
-                <Button asChild size="lg" className="h-14 rounded-2xl bg-sky-400 px-8 text-base font-black text-slate-950 shadow-xl shadow-sky-400/20 hover:bg-sky-300">
-                  <a href={whatsappLink} target="_blank" rel="noreferrer">
-                    Solicitar orçamento <ArrowRight className="ml-2 h-5 w-5" />
-                  </a>
-                </Button>
-                <Button asChild size="lg" variant="outline" className="h-14 rounded-2xl border-sky-200/20 bg-white/5 px-8 text-base font-bold text-white hover:bg-white/10">
-                  <a href="#servicos">Conhecer serviços</a>
-                </Button>
-              </div>
-
-              <div className="mt-10 grid max-w-2xl gap-3 sm:grid-cols-3">
-                {stats.map((stat) => (
-                  <div key={stat.label} className="rounded-3xl border border-white/10 bg-white/[0.04] p-4 backdrop-blur">
-                    <p className="text-2xl font-black text-sky-200">{stat.value}</p>
-                    <p className="mt-1 text-xs uppercase tracking-[0.2em] text-slate-400">{stat.label}</p>
-                    <p className="mt-2 text-sm text-slate-300">{stat.text}</p>
-                  </div>
-                ))}
-              </div>
-            </motion.div>
-
-            <motion.div initial={{ opacity: 0, scale: 0.94, y: 18 }} animate={{ opacity: 1, scale: 1, y: 0 }} transition={{ duration: 0.8, delay: 0.1 }} className="relative">
-              <div className="absolute -left-8 -top-8 h-48 w-48 rounded-full bg-sky-400/20 blur-3xl" />
-              <div className="absolute -bottom-8 -right-8 h-48 w-48 rounded-full bg-cyan-200/10 blur-3xl" />
-
-              <div className="relative rounded-[2.2rem] border border-sky-200/15 bg-slate-900/60 p-4 shadow-2xl shadow-sky-950/60 backdrop-blur-xl">
-                <div className="rounded-[1.8rem] border border-white/10 bg-[#081827] p-5">
-                  <div className="mb-5 flex items-center justify-between">
-                    <div>
-                      <p className="text-sm text-slate-400">Painel HF Connect</p>
-                      <p className="text-xl font-black">Diagnóstico da estrutura</p>
-                    </div>
-                    <div className="rounded-2xl bg-emerald-400/10 px-3 py-2 text-sm font-bold text-emerald-300">Online</div>
-                  </div>
-
-                  <div className="grid gap-4">
-                    <TechPanelCard
-                      icon={Satellite}
-                      title="Starlink"
-                      value="Especialidade"
-                      text="Instalação, configuração e otimização para máxima performance em casas, empresas e propriedades rurais."
-                      points={["Alinhamento preciso", "Rede otimizada", "Ideal para zona rural"]}
-                    />
-                    <TechPanelCard
-                      icon={Camera}
-                      title="Câmeras"
-                      value="Destaque"
-                      text="Monitoramento com acesso remoto, gravação segura e visão estratégica dos pontos mais importantes."
-                      points={["Alta definição", "Visão noturna", "Acesso pelo celular"]}
-                    />
-                    <TechPanelCard
-                      icon={Tractor}
-                      title="Zona Rural"
-                      value="Foco"
-                      text="Conectividade para fazendas, sítios e chácaras com soluções robustas para vencer distância e instabilidade."
-                      points={["Longo alcance", "Estabilidade", "Ideal para o campo"]}
-                    />
-                  </div>
-
-                  <div className="mt-5 rounded-3xl border border-sky-200/10 bg-sky-300/10 p-5">
-                    <div className="flex items-start gap-4">
-                      <div className="flex h-12 w-12 flex-none items-center justify-center rounded-2xl bg-sky-300 text-slate-950">
-                        <ShieldCheck className="h-6 w-6" />
+              {[
+                { emoji: "🛰️", title: "Starlink", badge: "Especialidade", text: "Instalação, configuração e otimização para máxima performance em casas, empresas e propriedades rurais.", points: ["Alinhamento preciso", "Rede otimizada", "Ideal para zona rural"] },
+                { emoji: "📷", title: "Câmeras", badge: "Destaque", text: "Monitoramento com acesso remoto, gravação segura e visão estratégica dos pontos mais importantes.", points: ["Alta definição", "Visão noturna", "Acesso pelo celular"] },
+                { emoji: "🚜", title: "Zona Rural", badge: "Foco", text: "Conectividade para fazendas, sítios e chácaras com soluções robustas para vencer distância e instabilidade.", points: ["Longo alcance", "Estabilidade", "Ideal para o campo"] },
+              ].map(card => (
+                <div key={card.title} style={{ borderRadius: 20, border: "1px solid rgba(125,211,252,0.1)", background: "rgba(255,255,255,0.04)", padding: 18, marginBottom: 12, transition: "border-color 0.2s" }}>
+                  <div style={{ display: "flex", gap: 16 }}>
+                    <div style={{ width: 52, height: 52, flexShrink: 0, borderRadius: 16, background: "rgba(56,189,248,0.1)", display: "flex", alignItems: "center", justifyContent: "center", fontSize: 24, border: "1px solid rgba(125,211,252,0.1)" }}>{card.emoji}</div>
+                    <div style={{ flex: 1 }}>
+                      <div style={{ display: "flex", justifyContent: "space-between", marginBottom: 6 }}>
+                        <span style={{ fontWeight: 900, fontSize: 16 }}>{card.title}</span>
+                        <span style={{ background: "rgba(56,189,248,0.1)", color: "#7dd3fc", fontSize: 11, fontWeight: 900, padding: "4px 10px", borderRadius: 999 }}>{card.badge}</span>
                       </div>
-                      <div>
-                        <p className="font-black text-sky-100">Instalação preparada para o uso real</p>
-                        <p className="mt-1 text-sm leading-6 text-slate-300">
-                          Menos improviso, mais estabilidade, segurança e facilidade para manutenção futura.
-                        </p>
+                      <p style={{ fontSize: 12, color: "#94a3b8", lineHeight: 1.6, marginBottom: 10 }}>{card.text}</p>
+                      <div style={{ display: "flex", flexWrap: "wrap", gap: 6 }}>
+                        {card.points.map(p => <span key={p} style={{ fontSize: 10, fontWeight: 700, color: "#7dd3fc", background: "rgba(15,23,42,0.6)", border: "1px solid rgba(125,211,252,0.15)", borderRadius: 999, padding: "3px 10px" }}>✓ {p}</span>)}
                       </div>
                     </div>
                   </div>
                 </div>
+              ))}
+              <div style={{ borderRadius: 20, border: "1px solid rgba(125,211,252,0.1)", background: "rgba(56,189,248,0.08)", padding: 20, marginTop: 4 }}>
+                <div style={{ display: "flex", gap: 16, alignItems: "flex-start" }}>
+                  <div style={{ width: 44, height: 44, flexShrink: 0, borderRadius: 14, background: "#38bdf8", display: "flex", alignItems: "center", justifyContent: "center", fontSize: 20, color: "#0f172a" }}>🛡️</div>
+                  <div>
+                    <div style={{ fontWeight: 900, color: "#e0f2fe", marginBottom: 4 }}>Instalação preparada para o uso real</div>
+                    <div style={{ fontSize: 13, color: "#94a3b8", lineHeight: 1.6 }}>Menos improviso, mais estabilidade, segurança e facilidade para manutenção futura.</div>
+                  </div>
+                </div>
               </div>
-            </motion.div>
+            </div>
           </div>
         </section>
 
-        <section id="servicos" className="mx-auto max-w-7xl px-4 py-20 sm:px-6 lg:px-8">
-          <SectionHeader
-            eyebrow="Serviços"
-            title="Soluções técnicas para conectar, proteger e organizar"
-            description="Da instalação simples à estrutura completa, a HF Connect entrega uma solução pensada para estabilidade, segurança e facilidade de uso."
-          />
-
-          <div className="mt-12 grid gap-5 md:grid-cols-2 xl:grid-cols-3">
-            {services.map((service, index) => (
-              <motion.div
-                key={service.title}
-                initial={{ opacity: 0, y: 20 }}
-                whileInView={{ opacity: 1, y: 0 }}
-                viewport={{ once: true, margin: "-80px" }}
-                transition={{ duration: 0.45, delay: index * 0.05 }}
-              >
-                <Card className="group h-full overflow-hidden rounded-[2rem] border-sky-200/10 bg-white/[0.045] text-white shadow-xl shadow-black/20 backdrop-blur transition hover:-translate-y-1 hover:border-sky-300/30 hover:bg-white/[0.07]">
-                  <CardContent className="p-6">
-                    <div className="mb-5 flex items-center justify-between">
-                      <div className="flex h-14 w-14 items-center justify-center rounded-2xl bg-sky-300/12 text-sky-300 ring-1 ring-sky-200/10 transition group-hover:bg-sky-300 group-hover:text-slate-950">
-                        <service.icon className="h-7 w-7" />
-                      </div>
-                      <ChevronRight className="h-5 w-5 text-slate-500 transition group-hover:translate-x-1 group-hover:text-sky-300" />
-                    </div>
-                    <h3 className="text-2xl font-black">{service.title}</h3>
-                    <p className="mt-3 leading-7 text-slate-300">{service.description}</p>
-                    <div className="mt-5 flex flex-wrap gap-2">
-                      {service.points.map((point) => (
-                        <span key={point} className="rounded-full border border-sky-200/10 bg-sky-300/10 px-3 py-1 text-xs font-semibold text-sky-100">
-                          {point}
-                        </span>
-                      ))}
-                    </div>
-                  </CardContent>
-                </Card>
-              </motion.div>
+        {/* Services */}
+        <section id="servicos" style={{ maxWidth: 1280, margin: "0 auto", padding: "80px 24px" }}>
+          <FadeUp>
+            <div style={{ maxWidth: 640 }}>
+              <div style={{ fontSize: 11, fontWeight: 900, textTransform: "uppercase", letterSpacing: "0.28em", color: "#38bdf8", marginBottom: 12 }}>Serviços</div>
+              <h2 style={{ fontSize: "clamp(1.8rem, 4vw, 3rem)", fontWeight: 900, letterSpacing: "-0.03em", marginBottom: 16 }}>Soluções técnicas para conectar, proteger e organizar</h2>
+              <p style={{ fontSize: 17, color: "#94a3b8", lineHeight: 1.8 }}>Da instalação simples à estrutura completa, a HF Connect entrega uma solução pensada para estabilidade, segurança e facilidade de uso.</p>
+            </div>
+          </FadeUp>
+          <div style={{ display: "grid", gridTemplateColumns: "repeat(3, 1fr)", gap: 20, marginTop: 48 }}>
+            {services.map((service, i) => (
+              <FadeUp key={service.title} delay={i * 0.05}>
+                <div style={{ borderRadius: 28, border: "1px solid rgba(125,211,252,0.1)", background: "rgba(255,255,255,0.04)", padding: 24, height: "100%", backdropFilter: "blur(8px)", transition: "border-color 0.2s, background 0.2s, transform 0.2s", cursor: "default" }}
+                  onMouseOver={e => { e.currentTarget.style.borderColor = "rgba(125,211,252,0.3)"; e.currentTarget.style.transform = "translateY(-4px)"; }}
+                  onMouseOut={e => { e.currentTarget.style.borderColor = "rgba(125,211,252,0.1)"; e.currentTarget.style.transform = "translateY(0)"; }}>
+                  <div style={{ display: "flex", justifyContent: "space-between", alignItems: "center", marginBottom: 20 }}>
+                    <div style={{ width: 52, height: 52, borderRadius: 16, background: "rgba(56,189,248,0.08)", display: "flex", alignItems: "center", justifyContent: "center", fontSize: 26, border: "1px solid rgba(125,211,252,0.1)" }}>{service.emoji}</div>
+                    <span style={{ color: "#475569", fontSize: 18 }}>›</span>
+                  </div>
+                  <h3 style={{ fontSize: 20, fontWeight: 900, marginBottom: 12 }}>{service.title}</h3>
+                  <p style={{ fontSize: 14, color: "#94a3b8", lineHeight: 1.7, marginBottom: 16 }}>{service.description}</p>
+                  <div style={{ display: "flex", flexWrap: "wrap", gap: 8 }}>
+                    {service.points.map(p => <span key={p} style={{ borderRadius: 999, border: "1px solid rgba(125,211,252,0.15)", background: "rgba(56,189,248,0.08)", padding: "4px 12px", fontSize: 11, fontWeight: 700, color: "#7dd3fc" }}>{p}</span>)}
+                  </div>
+                </div>
+              </FadeUp>
             ))}
           </div>
         </section>
 
-        <section id="solucoes" className="border-y border-white/10 bg-white/[0.035] px-4 py-20 sm:px-6 lg:px-8">
-          <div className="mx-auto max-w-7xl">
-            <SectionHeader
-              eyebrow="Onde atuamos"
-              title="Atendimento para casa, empresa e campo"
-              description="A estrutura muda conforme o ambiente. Por isso, a solução precisa ser planejada de acordo com o uso, distância, equipamentos e necessidade de segurança."
-            />
-
-            <div className="mt-12 grid gap-6 lg:grid-cols-3">
-              {segments.map((segment) => (
-                <div key={segment.title} className="rounded-[2rem] border border-white/10 bg-[#07111f]/70 p-7 shadow-xl shadow-black/20">
-                  <div className="mb-6 flex h-14 w-14 items-center justify-center rounded-2xl bg-sky-300 text-slate-950">
-                    <segment.icon className="h-7 w-7" />
+        {/* Segments */}
+        <section id="solucoes" style={{ borderTop: "1px solid rgba(255,255,255,0.07)", borderBottom: "1px solid rgba(255,255,255,0.07)", background: "rgba(255,255,255,0.02)", padding: "80px 24px" }}>
+          <div style={{ maxWidth: 1280, margin: "0 auto" }}>
+            <FadeUp>
+              <div style={{ maxWidth: 640 }}>
+                <div style={{ fontSize: 11, fontWeight: 900, textTransform: "uppercase", letterSpacing: "0.28em", color: "#38bdf8", marginBottom: 12 }}>Onde atuamos</div>
+                <h2 style={{ fontSize: "clamp(1.8rem, 4vw, 3rem)", fontWeight: 900, letterSpacing: "-0.03em", marginBottom: 16 }}>Atendimento para casa, empresa e campo</h2>
+                <p style={{ fontSize: 17, color: "#94a3b8", lineHeight: 1.8 }}>A estrutura muda conforme o ambiente. Por isso, a solução precisa ser planejada de acordo com o uso, distância, equipamentos e necessidade de segurança.</p>
+              </div>
+            </FadeUp>
+            <div style={{ display: "grid", gridTemplateColumns: "repeat(3, 1fr)", gap: 24, marginTop: 48 }}>
+              {segments.map((seg, i) => (
+                <FadeUp key={seg.title} delay={i * 0.08}>
+                  <div style={{ borderRadius: 28, border: "1px solid rgba(255,255,255,0.08)", background: "rgba(7,17,31,0.7)", padding: 28 }}>
+                    <div style={{ width: 52, height: 52, borderRadius: 16, background: "#38bdf8", display: "flex", alignItems: "center", justifyContent: "center", fontSize: 26, marginBottom: 20, color: "#0f172a" }}>{seg.emoji}</div>
+                    <h3 style={{ fontSize: 22, fontWeight: 900, marginBottom: 12 }}>{seg.title}</h3>
+                    <p style={{ fontSize: 15, color: "#94a3b8", lineHeight: 1.7 }}>{seg.text}</p>
                   </div>
-                  <h3 className="text-2xl font-black">{segment.title}</h3>
-                  <p className="mt-3 leading-7 text-slate-300">{segment.text}</p>
-                </div>
+                </FadeUp>
               ))}
             </div>
           </div>
         </section>
 
-        <section className="mx-auto grid max-w-7xl gap-12 px-4 py-20 sm:px-6 lg:grid-cols-[0.9fr_1.1fr] lg:px-8">
-          <div>
-            <p className="mb-3 text-sm font-black uppercase tracking-[0.28em] text-sky-300">Diferenciais</p>
-            <h2 className="text-3xl font-black tracking-tight sm:text-5xl">Não é só instalar. É deixar funcionando bem.</h2>
-            <p className="mt-5 text-lg leading-8 text-slate-300">
-              Uma rede ruim costuma falhar no pior momento. A HF Connect prioriza organização, testes, configuração correta e orientação para você usar tudo com confiança.
-            </p>
-            <div className="mt-8 rounded-[2rem] border border-sky-200/10 bg-sky-300/10 p-6">
-              <div className="flex gap-4">
-                <LockKeyhole className="h-7 w-7 flex-none text-sky-300" />
-                <div>
-                  <p className="font-black text-sky-100">Mais segurança e menos dor de cabeça</p>
-                  <p className="mt-2 text-sm leading-6 text-slate-300">
-                    Câmeras, internet, Wi‑Fi e rede trabalhando juntos, com configuração mais limpa e fácil de manter.
-                  </p>
+        {/* Benefits */}
+        <section style={{ maxWidth: 1280, margin: "0 auto", padding: "80px 24px", display: "grid", gridTemplateColumns: "0.9fr 1.1fr", gap: 64, alignItems: "center" }}>
+          <FadeUp>
+            <div>
+              <div style={{ fontSize: 11, fontWeight: 900, textTransform: "uppercase", letterSpacing: "0.28em", color: "#38bdf8", marginBottom: 12 }}>Diferenciais</div>
+              <h2 style={{ fontSize: "clamp(1.8rem, 3.5vw, 2.8rem)", fontWeight: 900, letterSpacing: "-0.03em", marginBottom: 20 }}>Não é só instalar. É deixar funcionando bem.</h2>
+              <p style={{ fontSize: 17, color: "#94a3b8", lineHeight: 1.8, marginBottom: 32 }}>Uma rede ruim costuma falhar no pior momento. A HF Connect prioriza organização, testes, configuração correta e orientação para você usar tudo com confiança.</p>
+              <div style={{ borderRadius: 24, border: "1px solid rgba(125,211,252,0.12)", background: "rgba(56,189,248,0.07)", padding: 24 }}>
+                <div style={{ display: "flex", gap: 16 }}>
+                  <span style={{ fontSize: 28 }}>🔒</span>
+                  <div>
+                    <div style={{ fontWeight: 900, color: "#e0f2fe", marginBottom: 8 }}>Mais segurança e menos dor de cabeça</div>
+                    <div style={{ fontSize: 13, color: "#94a3b8", lineHeight: 1.6 }}>Câmeras, internet, Wi‑Fi e rede trabalhando juntos, com configuração mais limpa e fácil de manter.</div>
+                  </div>
                 </div>
               </div>
             </div>
-          </div>
-
-          <div className="grid gap-4 sm:grid-cols-2">
-            {benefits.map((benefit) => (
-              <div key={benefit} className="flex gap-3 rounded-3xl border border-white/10 bg-white/[0.045] p-5 backdrop-blur">
-                <CheckCircle2 className="mt-0.5 h-5 w-5 flex-none text-sky-300" />
-                <span className="leading-7 text-slate-200">{benefit}</span>
-              </div>
+          </FadeUp>
+          <div style={{ display: "grid", gridTemplateColumns: "1fr 1fr", gap: 12 }}>
+            {benefits.map((b, i) => (
+              <FadeUp key={b} delay={i * 0.05}>
+                <div style={{ display: "flex", gap: 12, borderRadius: 20, border: "1px solid rgba(255,255,255,0.08)", background: "rgba(255,255,255,0.04)", padding: 18, backdropFilter: "blur(8px)" }}>
+                  <span style={{ color: "#38bdf8", flexShrink: 0, marginTop: 2 }}>✓</span>
+                  <span style={{ fontSize: 13, color: "#cbd5e1", lineHeight: 1.6 }}>{b}</span>
+                </div>
+              </FadeUp>
             ))}
           </div>
         </section>
 
-        <section id="processo" className="mx-auto max-w-7xl px-4 py-20 sm:px-6 lg:px-8">
-          <SectionHeader
-            eyebrow="Como funciona"
-            title="Do orçamento à entrega, com clareza"
-            description="Um fluxo simples para entender sua necessidade, propor a solução certa e entregar a estrutura funcionando."
-          />
-
-          <div className="mt-12 grid gap-5 lg:grid-cols-4">
-            {process.map((step) => (
-              <div key={step.number} className="relative rounded-[2rem] border border-white/10 bg-white/[0.045] p-6 shadow-xl shadow-black/20">
-                <p className="text-5xl font-black text-sky-300/25">{step.number}</p>
-                <h3 className="mt-4 text-xl font-black">{step.title}</h3>
-                <p className="mt-3 text-sm leading-7 text-slate-300">{step.text}</p>
-              </div>
+        {/* Process */}
+        <section id="processo" style={{ maxWidth: 1280, margin: "0 auto", padding: "80px 24px" }}>
+          <FadeUp>
+            <div style={{ maxWidth: 640 }}>
+              <div style={{ fontSize: 11, fontWeight: 900, textTransform: "uppercase", letterSpacing: "0.28em", color: "#38bdf8", marginBottom: 12 }}>Como funciona</div>
+              <h2 style={{ fontSize: "clamp(1.8rem, 4vw, 3rem)", fontWeight: 900, letterSpacing: "-0.03em", marginBottom: 16 }}>Do orçamento à entrega, com clareza</h2>
+              <p style={{ fontSize: 17, color: "#94a3b8", lineHeight: 1.8 }}>Um fluxo simples para entender sua necessidade, propor a solução certa e entregar a estrutura funcionando.</p>
+            </div>
+          </FadeUp>
+          <div style={{ display: "grid", gridTemplateColumns: "repeat(4, 1fr)", gap: 20, marginTop: 48 }}>
+            {process.map((step, i) => (
+              <FadeUp key={step.number} delay={i * 0.07}>
+                <div style={{ borderRadius: 28, border: "1px solid rgba(255,255,255,0.08)", background: "rgba(255,255,255,0.04)", padding: 24 }}>
+                  <div style={{ fontSize: 48, fontWeight: 900, color: "rgba(56,189,248,0.2)", marginBottom: 16 }}>{step.number}</div>
+                  <h3 style={{ fontSize: 17, fontWeight: 900, marginBottom: 12 }}>{step.title}</h3>
+                  <p style={{ fontSize: 13, color: "#94a3b8", lineHeight: 1.7 }}>{step.text}</p>
+                </div>
+              </FadeUp>
             ))}
           </div>
         </section>
 
-        <section className="px-4 py-20 sm:px-6 lg:px-8">
-          <div className="mx-auto max-w-7xl overflow-hidden rounded-[2.5rem] border border-sky-200/15 bg-gradient-to-br from-sky-300 via-sky-400 to-cyan-300 p-1 shadow-2xl shadow-sky-950/50">
-            <div className="rounded-[2.3rem] bg-[#07111f] p-8 sm:p-12 lg:p-16">
-              <div className="grid gap-10 lg:grid-cols-[1.2fr_0.8fr] lg:items-center">
+        {/* CTA */}
+        <section style={{ padding: "80px 24px" }}>
+          <div style={{ maxWidth: 1280, margin: "0 auto", borderRadius: 40, border: "1px solid rgba(125,211,252,0.2)", background: "linear-gradient(135deg, #38bdf8, #0ea5e9, #67e8f9)", padding: 2, boxShadow: "0 32px 80px rgba(0,0,0,0.5)" }}>
+            <div style={{ borderRadius: 38, background: "#07111f", padding: "64px 48px" }}>
+              <div style={{ display: "grid", gridTemplateColumns: "1.2fr 0.8fr", gap: 48, alignItems: "center" }}>
                 <div>
-                  <div className="mb-5 inline-flex items-center gap-2 rounded-full bg-sky-300/10 px-4 py-2 text-sm font-bold text-sky-100 ring-1 ring-sky-200/15">
-                    <ClipboardCheck className="h-4 w-4" /> Orçamento personalizado
+                  <div style={{ display: "inline-flex", alignItems: "center", gap: 8, background: "rgba(56,189,248,0.1)", border: "1px solid rgba(125,211,252,0.15)", borderRadius: 999, padding: "8px 16px", fontSize: 13, fontWeight: 700, color: "#e0f2fe", marginBottom: 24 }}>
+                    📋 Orçamento personalizado
                   </div>
-                  <h2 className="text-3xl font-black tracking-tight sm:text-5xl">
+                  <h2 style={{ fontSize: "clamp(1.8rem, 3.5vw, 2.8rem)", fontWeight: 900, letterSpacing: "-0.03em", marginBottom: 20 }}>
                     Quer melhorar sua internet, instalar câmeras ou organizar sua rede?
                   </h2>
-                  <p className="mt-5 max-w-2xl text-lg leading-8 text-slate-300">
+                  <p style={{ fontSize: 17, color: "#94a3b8", lineHeight: 1.8, maxWidth: 480 }}>
                     Envie uma mensagem contando o que precisa. A HF Connect te orienta no melhor caminho para sua casa, empresa ou fazenda.
                   </p>
                 </div>
-
-                <div className="rounded-[2rem] border border-white/10 bg-white/[0.045] p-6">
-                  <div className="flex items-center gap-3 rounded-2xl bg-slate-950/80 p-4">
-                    <MessageCircle className="h-6 w-6 text-sky-300" />
+                <div style={{ borderRadius: 28, border: "1px solid rgba(255,255,255,0.08)", background: "rgba(255,255,255,0.04)", padding: 24 }}>
+                  <div style={{ display: "flex", alignItems: "center", gap: 12, background: "rgba(0,0,0,0.5)", borderRadius: 16, padding: 16, marginBottom: 20 }}>
+                    <span style={{ fontSize: 24 }}>💬</span>
                     <div>
-                      <p className="font-black">Atendimento via WhatsApp</p>
-                      <p className="text-sm text-slate-400">Rápido, prático e direto ao ponto</p>
+                      <div style={{ fontWeight: 900, fontSize: 15 }}>Atendimento via WhatsApp</div>
+                      <div style={{ fontSize: 12, color: "#64748b" }}>Rápido, prático e direto ao ponto</div>
                     </div>
                   </div>
-                  <Button asChild size="lg" className="mt-5 h-14 w-full rounded-2xl bg-sky-300 text-base font-black text-slate-950 hover:bg-sky-200">
-                    <a href={whatsappLink} target="_blank" rel="noreferrer">
-                      Chamar agora <Phone className="ml-2 h-5 w-5" />
-                    </a>
-                  </Button>
-                  <div className="mt-5 flex items-center gap-2 text-sm text-slate-300">
-                    <MapPin className="h-4 w-4 text-sky-300" /> Patos de Minas e região
-                  </div>
-                  <div className="mt-3 flex items-center gap-2 text-sm text-slate-300">
-                    <Clock3 className="h-4 w-4 text-sky-300" /> Atendimento com agendamento
+                  <a href={whatsappLink} target="_blank" rel="noreferrer" style={{ display: "flex", alignItems: "center", justifyContent: "center", gap: 8, background: "#38bdf8", color: "#0f172a", fontWeight: 900, fontSize: 16, padding: "16px", borderRadius: 16, textDecoration: "none", width: "100%", boxSizing: "border-box" }}>
+                    Chamar agora 📱
+                  </a>
+                  <div style={{ marginTop: 20, display: "flex", flexDirection: "column", gap: 10, fontSize: 13, color: "#94a3b8" }}>
+                    <span>📍 Patos de Minas e região</span>
+                    <span>🕐 Atendimento com agendamento</span>
                   </div>
                 </div>
               </div>
@@ -424,82 +348,35 @@ export default function HFConnectSite() {
         </section>
       </main>
 
-      <footer id="contato" className="relative z-10 border-t border-white/10 bg-[#050b14] px-4 py-10 sm:px-6 lg:px-8">
-        <div className="mx-auto grid max-w-7xl gap-8 md:grid-cols-[1.1fr_0.9fr_0.8fr]">
+      {/* Footer */}
+      <footer id="contato" style={{ position: "relative", zIndex: 10, borderTop: "1px solid rgba(255,255,255,0.08)", background: "#050b14", padding: "48px 24px" }}>
+        <div style={{ maxWidth: 1280, margin: "0 auto", display: "grid", gridTemplateColumns: "1.1fr 0.9fr 0.8fr", gap: 48 }}>
           <div>
-            <div className="flex items-center gap-3">
-              <div className="flex h-11 w-11 items-center justify-center rounded-2xl bg-sky-300 text-slate-950">
-                <Network className="h-6 w-6" />
-              </div>
+            <div style={{ display: "flex", alignItems: "center", gap: 12, marginBottom: 20 }}>
+              <div style={{ width: 44, height: 44, borderRadius: 14, background: "#38bdf8", display: "flex", alignItems: "center", justifyContent: "center", fontSize: 22, color: "#0f172a" }}>🔗</div>
               <div>
-                <p className="text-lg font-black">HF Connect</p>
-                <p className="text-sm text-slate-400">Tecnologia que conecta você</p>
+                <div style={{ fontSize: 17, fontWeight: 900 }}>HF Connect</div>
+                <div style={{ fontSize: 12, color: "#64748b" }}>Tecnologia que conecta você</div>
               </div>
             </div>
-            <p className="mt-5 max-w-md leading-7 text-slate-400">
+            <p style={{ fontSize: 14, color: "#64748b", lineHeight: 1.8, maxWidth: 320 }}>
               Fibra óptica, câmeras, Starlink, Wi‑Fi e infraestrutura de redes para residências, empresas e propriedades rurais.
             </p>
           </div>
-
           <div>
-            <p className="font-black text-white">Serviços</p>
-            <div className="mt-4 grid gap-2 text-sm text-slate-400">
-              <a href="#servicos" className="hover:text-sky-200">Fibra óptica</a>
-              <a href="#servicos" className="hover:text-sky-200">Câmeras de segurança</a>
-              <a href="#servicos" className="hover:text-sky-200">Starlink e Wi‑Fi</a>
-              <a href="#servicos" className="hover:text-sky-200">Redes e suporte técnico</a>
-            </div>
+            <div style={{ fontWeight: 900, marginBottom: 16 }}>Serviços</div>
+            {["Fibra óptica","Câmeras de segurança","Starlink e Wi‑Fi","Redes e suporte técnico"].map(s => (
+              <a key={s} href="#servicos" style={{ display: "block", fontSize: 13, color: "#64748b", textDecoration: "none", marginBottom: 10 }} onMouseOver={e => e.target.style.color="#7dd3fc"} onMouseOut={e => e.target.style.color="#64748b"}>{s}</a>
+            ))}
           </div>
-
           <div>
-            <p className="font-black text-white">Contato</p>
-            <div className="mt-4 grid gap-3 text-sm text-slate-400">
-              <a href={whatsappLink} target="_blank" rel="noreferrer" className="hover:text-sky-200">WhatsApp: inserir número</a>
-              <span>Patos de Minas e região</span>
-              <span>© {new Date().getFullYear()} HF Connect</span>
-            </div>
+            <div style={{ fontWeight: 900, marginBottom: 16 }}>Contato</div>
+            <a href={whatsappLink} target="_blank" rel="noreferrer" style={{ display: "block", fontSize: 13, color: "#64748b", textDecoration: "none", marginBottom: 10 }}>WhatsApp: inserir número</a>
+            <div style={{ fontSize: 13, color: "#64748b", marginBottom: 10 }}>Patos de Minas e região</div>
+            <div style={{ fontSize: 13, color: "#64748b" }}>© {new Date().getFullYear()} HF Connect</div>
           </div>
         </div>
       </footer>
-    </div>
-  );
-}
-
-function SectionHeader({ eyebrow, title, description }) {
-  return (
-    <div className="max-w-3xl">
-      <p className="mb-3 text-sm font-black uppercase tracking-[0.28em] text-sky-300">{eyebrow}</p>
-      <h2 className="text-3xl font-black tracking-tight sm:text-5xl">{title}</h2>
-      <p className="mt-5 text-lg leading-8 text-slate-300">{description}</p>
-    </div>
-  );
-}
-
-function TechPanelCard({ icon: Icon, title, value, text, points = [] }) {
-  return (
-    <div className="rounded-3xl border border-sky-200/10 bg-white/[0.045] p-5 transition hover:border-sky-300/25 hover:bg-sky-300/[0.07]">
-      <div className="flex items-start gap-4">
-        <div className="flex h-14 w-14 flex-none items-center justify-center rounded-2xl bg-sky-300/12 text-sky-300 ring-1 ring-sky-200/10">
-          <Icon className="h-7 w-7" />
-        </div>
-        <div className="min-w-0 flex-1">
-          <div className="flex items-center justify-between gap-3">
-            <h3 className="text-xl font-black">{title}</h3>
-            <span className="rounded-full bg-sky-300/10 px-3 py-1 text-xs font-black text-sky-200">{value}</span>
-          </div>
-          <p className="mt-2 text-sm leading-6 text-slate-300">{text}</p>
-          {points.length > 0 && (
-            <div className="mt-4 flex flex-wrap gap-2">
-              {points.map((point) => (
-                <span key={point} className="inline-flex items-center gap-1.5 rounded-full border border-sky-200/10 bg-slate-950/40 px-3 py-1 text-[11px] font-bold text-sky-100">
-                  <CheckCircle2 className="h-3.5 w-3.5 text-sky-300" />
-                  {point}
-                </span>
-              ))}
-            </div>
-          )}
-        </div>
-      </div>
     </div>
   );
 }
