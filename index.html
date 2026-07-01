@@ -456,6 +456,12 @@ footer {
 /* ── REVEAL ANIMATION ── */
 .reveal { opacity: 0; transform: translateY(22px); transition: opacity 0.55s ease, transform 0.55s ease; }
 .reveal.in { opacity: 1; transform: translateY(0); }
+
+/* ── INLINE ICON HELPER ── */
+.btn-ic { vertical-align: -3px; flex-shrink: 0; }
+.svc-ico svg, .seg-ico svg, .proc-icon svg, .ben-check svg { display: block; color: var(--sky); }
+.ben-callout-icon svg { display: block; }
+.cta-meta .i svg { display: block; }
 </style>
 </head>
 <body>
@@ -480,7 +486,7 @@ footer {
       <svg xmlns="http://www.w3.org/2000/svg" width="15" height="15" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round" style="vertical-align:-2px"><rect x="2" y="2" width="20" height="20" rx="5"/><circle cx="12" cy="12" r="5"/><circle cx="17.5" cy="6.5" r="1.2" fill="currentColor" stroke="none"/></svg>
       @connect.hf
     </a>
-    <a href="https://wa.me/5534997099025?text=Ol%C3%A1!+Vim+pelo+site+da+HF+Connect+e+gostaria+de+um+or%C3%A7amento." target="_blank" class="nav-btn">📱 Orçamento</a>
+    <a href="https://wa.me/5534997099025?text=Ol%C3%A1!+Vim+pelo+site+da+HF+Connect+e+gostaria+de+um+or%C3%A7amento." target="_blank" class="nav-btn"><svg class="btn-ic" width="15" height="15" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.3" stroke-linecap="round" stroke-linejoin="round"><path d="M4 4h16v12H8l-4 4V4Z"/></svg> Orçamento</a>
     <button class="nav-toggle" id="menuToggle" aria-label="Menu">
       <span></span><span></span><span></span>
     </button>
@@ -494,7 +500,7 @@ footer {
       <svg xmlns="http://www.w3.org/2000/svg" width="15" height="15" viewBox="0 0 24 24" fill="none" stroke="#e1306c" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round"><rect x="2" y="2" width="20" height="20" rx="5"/><circle cx="12" cy="12" r="5"/><circle cx="17.5" cy="6.5" r="1.2" fill="#e1306c" stroke="none"/></svg>
       Instagram @connect.hf
     </a>
-    <a href="https://wa.me/5534997099025?text=Ol%C3%A1!+Vim+pelo+site+da+HF+Connect+e+gostaria+de+um+or%C3%A7amento." target="_blank" class="mob-cta">📱 Solicitar Orçamento</a>
+    <a href="https://wa.me/5534997099025?text=Ol%C3%A1!+Vim+pelo+site+da+HF+Connect+e+gostaria+de+um+or%C3%A7amento." target="_blank" class="mob-cta"><svg class="btn-ic" width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.3" stroke-linecap="round" stroke-linejoin="round"><path d="M4 4h16v12H8l-4 4V4Z"/></svg> Solicitar Orçamento</a>
   </div>
 </nav>
 
@@ -505,7 +511,7 @@ footer {
   <h1>Conexão forte,<br><em>câmeras seguras</em><br>e rede bem feita.</h1>
   <p class="hero-desc">A <strong>HF Connect</strong> instala fibra óptica, Starlink, Wi-Fi, câmeras e redes estruturadas para casas, empresas e propriedades rurais.</p>
   <div class="hero-btns">
-    <a href="https://wa.me/5534997099025?text=Ol%C3%A1!+Vim+pelo+site+da+HF+Connect+e+gostaria+de+um+or%C3%A7amento." target="_blank" class="btn-main">📱 Solicitar orçamento</a>
+    <a href="https://wa.me/5534997099025?text=Ol%C3%A1!+Vim+pelo+site+da+HF+Connect+e+gostaria+de+um+or%C3%A7amento." target="_blank" class="btn-main"><svg class="btn-ic" width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.3" stroke-linecap="round" stroke-linejoin="round"><path d="M4 4h16v12H8l-4 4V4Z"/></svg> Solicitar orçamento</a>
     <a href="#servicos" class="btn-outline">Ver serviços ↓</a>
   </div>
   <div class="trust-strip">
@@ -527,12 +533,12 @@ footer {
     <div class="reveal">
       <div class="car-outer">
         <div class="car-track svc-grid" id="svcTrack">
-          <div class="car-slide svc-slide"><div class="svc-card"><div class="svc-ico">🔌</div><h3>Fibra Óptica</h3><p>Fusão, conectorização, testes e organização de caixas ópticas com qualidade técnica.</p><div class="tags"><span class="tag">Fusão de fibra</span><span class="tag">Power meter</span><span class="tag">Organização</span></div></div></div>
-          <div class="car-slide svc-slide"><div class="svc-card"><div class="svc-ico">📷</div><h3>Câmeras e CFTV</h3><p>DVR/NVR, acesso remoto pelo celular, cabeamento e posicionamento estratégico.</p><div class="tags"><span class="tag">Acesso celular</span><span class="tag">Residencial</span><span class="tag">Empresarial</span></div></div></div>
-          <div class="car-slide svc-slide"><div class="svc-card"><div class="svc-ico">🛰️</div><h3>Starlink</h3><p>Instalação, posicionamento ideal, Wi-Fi e integração com câmeras e roteadores.</p><div class="tags"><span class="tag">Fazenda</span><span class="tag">Rede estável</span><span class="tag">Melhor cobertura</span></div></div></div>
-          <div class="car-slide svc-slide"><div class="svc-card"><div class="svc-ico">📶</div><h3>Wi-Fi Profissional</h3><p>Análise de sinal, pontos de acesso, redes mesh e eliminação de zonas sem cobertura.</p><div class="tags"><span class="tag">Mesh</span><span class="tag">Cobertura total</span><span class="tag">Rede visita</span></div></div></div>
-          <div class="car-slide svc-slide"><div class="svc-card"><div class="svc-ico">🖥️</div><h3>Redes Cabeadas</h3><p>Cabeamento estruturado, racks, switches, patch panels e identificação técnica.</p><div class="tags"><span class="tag">Rack organizado</span><span class="tag">Pontos de rede</span><span class="tag">Switches</span></div></div></div>
-          <div class="car-slide svc-slide"><div class="svc-card"><div class="svc-ico">🔧</div><h3>Suporte Técnico</h3><p>Diagnóstico de falhas, manutenção preventiva e configuração de equipamentos.</p><div class="tags"><span class="tag">Diagnóstico</span><span class="tag">Preventivo</span><span class="tag">Correção</span></div></div></div>
+          <div class="car-slide svc-slide"><div class="svc-card"><div class="svc-ico"><svg width="22" height="22" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M9 7V3M15 7V3M6 7h12l-1 5a5 5 0 0 1-10 0L6 7Z"/><path d="M10 17v1a2 2 0 0 0 4 0v-1"/></svg></div><h3>Fibra Óptica</h3><p>Fusão, conectorização, testes e organização de caixas ópticas com qualidade técnica.</p><div class="tags"><span class="tag">Fusão de fibra</span><span class="tag">Power meter</span><span class="tag">Organização</span></div></div></div>
+          <div class="car-slide svc-slide"><div class="svc-card"><div class="svc-ico"><svg width="22" height="22" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><rect x="3" y="9" width="13" height="7" rx="2"/><circle cx="9.5" cy="12.5" r="2"/><path d="M16 11l5-2v7l-5-2"/></svg></div><h3>Câmeras e CFTV</h3><p>DVR/NVR, acesso remoto pelo celular, cabeamento e posicionamento estratégico.</p><div class="tags"><span class="tag">Acesso celular</span><span class="tag">Residencial</span><span class="tag">Empresarial</span></div></div></div>
+          <div class="car-slide svc-slide"><div class="svc-card"><div class="svc-ico"><svg width="22" height="22" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M12 2v3.5"/><path d="M5.5 9.5a6.5 6.5 0 0 1 13 0"/><path d="M8.3 9.5a3.7 3.7 0 0 1 7.4 0"/><circle cx="12" cy="9.5" r="1.3" fill="currentColor" stroke="none"/><path d="M12 11v11"/><path d="M8 22h8"/></svg></div><h3>Starlink</h3><p>Instalação, posicionamento ideal, Wi-Fi e integração com câmeras e roteadores.</p><div class="tags"><span class="tag">Fazenda</span><span class="tag">Rede estável</span><span class="tag">Melhor cobertura</span></div></div></div>
+          <div class="car-slide svc-slide"><div class="svc-card"><div class="svc-ico"><svg width="22" height="22" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M2 8.5a16 16 0 0 1 20 0"/><path d="M5 12.5a11 11 0 0 1 14 0"/><path d="M8.5 16.5a6 6 0 0 1 7 0"/><circle cx="12" cy="20" r="1" fill="currentColor" stroke="none"/></svg></div><h3>Wi-Fi Profissional</h3><p>Análise de sinal, pontos de acesso, redes mesh e eliminação de zonas sem cobertura.</p><div class="tags"><span class="tag">Mesh</span><span class="tag">Cobertura total</span><span class="tag">Rede visita</span></div></div></div>
+          <div class="car-slide svc-slide"><div class="svc-card"><div class="svc-ico"><svg width="22" height="22" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><rect x="3" y="4" width="18" height="6" rx="1.5"/><rect x="3" y="14" width="18" height="6" rx="1.5"/><path d="M7 7h.01"/><path d="M7 17h.01"/><path d="M11 7h4"/><path d="M11 17h4"/></svg></div><h3>Redes Cabeadas</h3><p>Cabeamento estruturado, racks, switches, patch panels e identificação técnica.</p><div class="tags"><span class="tag">Rack organizado</span><span class="tag">Pontos de rede</span><span class="tag">Switches</span></div></div></div>
+          <div class="car-slide svc-slide"><div class="svc-card"><div class="svc-ico"><svg width="22" height="22" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M14.7 6.3a4 4 0 0 0-5.4 5.4L3 18v3h3l6.3-6.3a4 4 0 0 0 5.4-5.4l-2.1 2.1-2-2 2.1-2.1Z"/></svg></div><h3>Suporte Técnico</h3><p>Diagnóstico de falhas, manutenção preventiva e configuração de equipamentos.</p><div class="tags"><span class="tag">Diagnóstico</span><span class="tag">Preventivo</span><span class="tag">Correção</span></div></div></div>
         </div>
       </div>
       <div class="dots" id="svcDots"></div>
@@ -549,9 +555,9 @@ footer {
     <div class="reveal">
       <div class="car-outer">
         <div class="car-track seg-grid" id="segTrack">
-          <div class="car-slide seg-slide"><div class="seg-card"><span class="seg-ico">🏠</span><h3>Residências</h3><p>Internet forte em todos os cômodos, câmeras no celular e rede organizada para o dia a dia.</p></div></div>
-          <div class="car-slide seg-slide"><div class="seg-card"><span class="seg-ico">🏢</span><h3>Empresas</h3><p>Estrutura confiável para atendimento, câmeras, computadores, impressoras e sistemas.</p></div></div>
-          <div class="car-slide seg-slide"><div class="seg-card"><span class="seg-ico">🌾</span><h3>Fazendas e sítios</h3><p>Starlink, câmeras, Wi-Fi externo e monitoramento remoto da propriedade rural.</p></div></div>
+          <div class="car-slide seg-slide"><div class="seg-card"><span class="seg-ico"><svg width="28" height="28" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M3 11l9-7 9 7"/><path d="M5 10v9a1 1 0 0 0 1 1h4v-6h4v6h4a1 1 0 0 0 1-1v-9"/></svg></span><h3>Residências</h3><p>Internet forte em todos os cômodos, câmeras no celular e rede organizada para o dia a dia.</p></div></div>
+          <div class="car-slide seg-slide"><div class="seg-card"><span class="seg-ico"><svg width="28" height="28" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><rect x="4" y="3" width="16" height="18" rx="1"/><path d="M9 8h1"/><path d="M14 8h1"/><path d="M9 12h1"/><path d="M14 12h1"/><path d="M9 16h1"/><path d="M14 16h1"/><path d="M10 21v-4h4v4"/></svg></span><h3>Empresas</h3><p>Estrutura confiável para atendimento, câmeras, computadores, impressoras e sistemas.</p></div></div>
+          <div class="car-slide seg-slide"><div class="seg-card"><span class="seg-ico"><svg width="28" height="28" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M12 22V12"/><path d="M12 12c0-4 2-6 6-8-1 5-3 7-6 8Z"/><path d="M12 12c0-4-2-6-6-8 1 5 3 7 6 8Z"/><path d="M12 16.5c0-3 1.5-4.5 4.5-6-0.7 3.5-2 5-4.5 6Z"/><path d="M12 16.5c0-3-1.5-4.5-4.5-6 0.7 3.5 2 5 4.5 6Z"/></svg></span><h3>Fazendas e sítios</h3><p>Starlink, câmeras, Wi-Fi externo e monitoramento remoto da propriedade rural.</p></div></div>
         </div>
       </div>
       <div class="dots" id="segDots"></div>
@@ -566,10 +572,10 @@ footer {
     <h2 class="sec-title reveal">Do orçamento à entrega</h2>
     <p class="sec-sub reveal">Fluxo simples, transparente e sem surpresas.</p>
     <div class="proc-grid">
-      <div class="proc-card reveal"><div class="proc-num">01</div><div class="proc-icon">💬</div><h3>Entendimento da necessidade</h3><p>Você explica o objetivo: melhorar internet, instalar câmeras, configurar Starlink ou montar uma rede.</p></div>
-      <div class="proc-card reveal"><div class="proc-num">02</div><div class="proc-icon">🔍</div><h3>Avaliação técnica</h3><p>Análise do ambiente, pontos de instalação, sinal, equipamentos existentes e melhor solução.</p></div>
-      <div class="proc-card reveal"><div class="proc-num">03</div><div class="proc-icon">⚡</div><h3>Instalação organizada</h3><p>Execução com cuidado no acabamento, identificação, configuração e testes completos.</p></div>
-      <div class="proc-card reveal"><div class="proc-num">04</div><div class="proc-icon">✅</div><h3>Entrega e orientação</h3><p>Tudo funcionando — você entende como usar, acessar e cuidar da estrutura instalada.</p></div>
+      <div class="proc-card reveal"><div class="proc-num">01</div><div class="proc-icon"><svg width="22" height="22" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M4 4h16v12H8l-4 4V4Z"/></svg></div><h3>Entendimento da necessidade</h3><p>Você explica o objetivo: melhorar internet, instalar câmeras, configurar Starlink ou montar uma rede.</p></div>
+      <div class="proc-card reveal"><div class="proc-num">02</div><div class="proc-icon"><svg width="22" height="22" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><circle cx="11" cy="11" r="7"/><path d="M21 21l-4.3-4.3"/></svg></div><h3>Avaliação técnica</h3><p>Análise do ambiente, pontos de instalação, sinal, equipamentos existentes e melhor solução.</p></div>
+      <div class="proc-card reveal"><div class="proc-num">03</div><div class="proc-icon"><svg width="22" height="22" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M13 2 3 14h8l-1 8 10-12h-8l1-8Z"/></svg></div><h3>Instalação organizada</h3><p>Execução com cuidado no acabamento, identificação, configuração e testes completos.</p></div>
+      <div class="proc-card reveal"><div class="proc-num">04</div><div class="proc-icon"><svg width="22" height="22" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><circle cx="12" cy="12" r="9"/><path d="M8.5 12.5l2.5 2.5 5-5"/></svg></div><h3>Entrega e orientação</h3><p>Tudo funcionando — você entende como usar, acessar e cuidar da estrutura instalada.</p></div>
     </div>
   </div>
 </section>
@@ -583,7 +589,7 @@ footer {
         <h2>Não é só instalar.<br><span>É deixar funcionando bem.</span></h2>
         <p>Organização, testes e configuração correta — para você usar tudo com confiança, sem surpresas.</p>
         <div class="ben-callout">
-          <div class="ben-callout-icon">🔒</div>
+          <div class="ben-callout-icon"><svg width="19" height="19" viewBox="0 0 24 24" fill="none" stroke="#04111f" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M12 3l7 3v6c0 4.5-3 7.5-7 9-4-1.5-7-4.5-7-9V6l7-3Z"/></svg></div>
           <div>
             <strong>Mais segurança, menos dor de cabeça</strong>
             <p>Câmeras, internet, Wi-Fi e rede trabalhando juntos, com instalação limpa e fácil de manter.</p>
@@ -591,12 +597,12 @@ footer {
         </div>
       </div>
       <div class="ben-grid reveal">
-        <div class="ben-item"><span class="ben-check">✦</span><span>Atendimento técnico, direto e transparente</span></div>
-        <div class="ben-item"><span class="ben-check">✦</span><span>Instalação limpa e pensada para manutenção</span></div>
-        <div class="ben-item"><span class="ben-check">✦</span><span>Residência, empresa e área rural</span></div>
-        <div class="ben-item"><span class="ben-check">✦</span><span>Acesso remoto configurado em câmeras</span></div>
-        <div class="ben-item"><span class="ben-check">✦</span><span>Rede preparada para expansão futura</span></div>
-        <div class="ben-item"><span class="ben-check">✦</span><span>Foco em estabilidade e bom acabamento</span></div>
+        <div class="ben-item"><span class="ben-check"><svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round"><path d="M4 12l5 5L20 6"/></svg></span><span>Atendimento técnico, direto e transparente</span></div>
+        <div class="ben-item"><span class="ben-check"><svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round"><path d="M4 12l5 5L20 6"/></svg></span><span>Instalação limpa e pensada para manutenção</span></div>
+        <div class="ben-item"><span class="ben-check"><svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round"><path d="M4 12l5 5L20 6"/></svg></span><span>Residência, empresa e área rural</span></div>
+        <div class="ben-item"><span class="ben-check"><svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round"><path d="M4 12l5 5L20 6"/></svg></span><span>Acesso remoto configurado em câmeras</span></div>
+        <div class="ben-item"><span class="ben-check"><svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round"><path d="M4 12l5 5L20 6"/></svg></span><span>Rede preparada para expansão futura</span></div>
+        <div class="ben-item"><span class="ben-check"><svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round"><path d="M4 12l5 5L20 6"/></svg></span><span>Foco em estabilidade e bom acabamento</span></div>
       </div>
     </div>
   </div>
@@ -606,14 +612,14 @@ footer {
 <section class="sec" id="contato">
   <div class="wrap">
     <div class="cta-box reveal">
-      <div class="cta-badge">✅ Orçamento gratuito e sem compromisso</div>
+      <div class="cta-badge"><svg class="btn-ic" width="15" height="15" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.3" stroke-linecap="round" stroke-linejoin="round"><circle cx="12" cy="12" r="9"/><path d="M8.5 12.5l2.5 2.5 5-5"/></svg> Orçamento gratuito e sem compromisso</div>
       <h2>Precisa de internet melhor, câmeras ou rede organizada?</h2>
       <p>Envie uma mensagem contando o que precisa. A HF Connect te orienta no melhor caminho para sua casa, empresa ou fazenda.</p>
       <div class="cta-meta">
-        <span><span class="i">📍</span> Patos de Minas e região</span>
-        <span><span class="i">🕐</span> Atendimento com agendamento</span>
+        <span><span class="i"><svg width="15" height="15" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.2" stroke-linecap="round" stroke-linejoin="round"><path d="M12 21s7-7.5 7-12a7 7 0 0 0-14 0c0 4.5 7 12 7 12Z"/><circle cx="12" cy="9" r="2.5"/></svg></span> Patos de Minas e região</span>
+        <span><span class="i"><svg width="15" height="15" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.2" stroke-linecap="round" stroke-linejoin="round"><circle cx="12" cy="12" r="9"/><path d="M12 7v5l3 3"/></svg></span> Atendimento com agendamento</span>
       </div>
-      <a href="https://wa.me/5534997099025?text=Ol%C3%A1!+Vim+pelo+site+da+HF+Connect+e+gostaria+de+um+or%C3%A7amento." target="_blank" class="btn-wa">📱 Chamar no WhatsApp · (34) 99709-9025</a>
+      <a href="https://wa.me/5534997099025?text=Ol%C3%A1!+Vim+pelo+site+da+HF+Connect+e+gostaria+de+um+or%C3%A7amento." target="_blank" class="btn-wa"><svg class="btn-ic" width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.3" stroke-linecap="round" stroke-linejoin="round"><path d="M4 4h16v12H8l-4 4V4Z"/></svg> Chamar no WhatsApp · (34) 99709-9025</a>
       <p class="cta-note">Sem compromisso · Resposta rápida</p>
     </div>
   </div>
@@ -640,10 +646,10 @@ footer {
     </div>
     <div class="footer-col">
       <h4>Contato</h4>
-      <a href="https://wa.me/5534997099025?text=Ol%C3%A1!+Vim+pelo+site+da+HF+Connect+e+gostaria+de+um+or%C3%A7amento." target="_blank">💬 (34) 99709-9025</a>
-      <a href="https://instagram.com/connect.hf" target="_blank">📸 @connect.hf</a>
-      <span>📍 Patos de Minas — MG</span>
-      <span>🕐 Seg–Sáb, horário comercial</span>
+      <a href="https://wa.me/5534997099025?text=Ol%C3%A1!+Vim+pelo+site+da+HF+Connect+e+gostaria+de+um+or%C3%A7amento." target="_blank"><svg class="btn-ic" width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.3" stroke-linecap="round" stroke-linejoin="round"><path d="M4 4h16v12H8l-4 4V4Z"/></svg> (34) 99709-9025</a>
+      <a href="https://instagram.com/connect.hf" target="_blank"><svg class="btn-ic" width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="#e1306c" stroke-width="2.3" stroke-linecap="round" stroke-linejoin="round"><rect x="2" y="2" width="20" height="20" rx="5"/><circle cx="12" cy="12" r="5"/><circle cx="17.5" cy="6.5" r="1.2" fill="#e1306c" stroke="none"/></svg> @connect.hf</a>
+      <span><svg class="btn-ic" width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.2" stroke-linecap="round" stroke-linejoin="round"><path d="M12 21s7-7.5 7-12a7 7 0 0 0-14 0c0 4.5 7 12 7 12Z"/><circle cx="12" cy="9" r="2.5"/></svg> Patos de Minas — MG</span>
+      <span><svg class="btn-ic" width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.2" stroke-linecap="round" stroke-linejoin="round"><circle cx="12" cy="12" r="9"/><path d="M12 7v5l3 3"/></svg> Seg–Sáb, horário comercial</span>
     </div>
   </div>
   <div class="footer-bottom">
