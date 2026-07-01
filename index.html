@@ -170,6 +170,20 @@ a { text-decoration: none; color: inherit; }
   background: radial-gradient(ellipse at 50% 30%, rgba(56,189,248,0.13), transparent 65%);
   pointer-events: none;
 }
+.hero-grid {
+  max-width: var(--max); margin: 0 auto;
+  display: grid; grid-template-columns: 1fr; gap: 40px; align-items: center;
+}
+.hero-content { display: flex; flex-direction: column; align-items: center; }
+.hero-visual { display: none; }
+@media (min-width: 1024px) {
+  .hero-grid { grid-template-columns: 1.05fr 0.95fr; gap: 56px; text-align: left; }
+  .hero-content { align-items: flex-start; }
+  .hero-badge, .hero-btns { margin-left: 0; }
+  .hero-desc { margin-left: 0; margin-right: 0; }
+  .hero-btns { justify-content: flex-start; }
+  .hero-visual { display: flex; align-items: center; justify-content: center; position: relative; height: 420px; }
+}
 .hero-badge {
   display: inline-flex; align-items: center; gap: 8px;
   background: rgba(56,189,248,0.09); border: 1px solid rgba(56,189,248,0.22);
@@ -179,7 +193,7 @@ a { text-decoration: none; color: inherit; }
 .badge-dot { width: 7px; height: 7px; background: var(--green); border-radius: 50%; box-shadow: 0 0 7px var(--green); flex-shrink: 0; }
 .hero h1 {
   font-family: 'Outfit', sans-serif;
-  font-size: clamp(36px, 6vw, 72px);
+  font-size: clamp(36px, 6vw, 64px);
   font-weight: 900; line-height: 1.04;
   letter-spacing: -0.015em; margin-bottom: 20px;
 }
@@ -196,8 +210,10 @@ a { text-decoration: none; color: inherit; }
 .hero-desc strong { color: #bae6fd; font-weight: 600; }
 .hero-btns {
   display: flex; flex-wrap: wrap; gap: 12px; justify-content: center;
-  margin-bottom: 50px;
+  margin-bottom: 0;
 }
+.hero-content .hero-btns { margin-bottom: 0; }
+.hero-trust-wrap { max-width: var(--max); margin: 50px auto 0; }
 .btn-main {
   background: linear-gradient(135deg, var(--sky), var(--cyan));
   color: #04111f; font-family: 'Outfit', sans-serif;
@@ -224,6 +240,44 @@ a { text-decoration: none; color: inherit; }
 }
 .trust-item { display: flex; align-items: center; gap: 8px; font-size: 13px; font-weight: 600; color: #475569; }
 .trust-dot { width: 5px; height: 5px; background: var(--sky); border-radius: 50%; flex-shrink: 0; }
+
+/* ── HERO VISUAL: SERVICE CAROUSEL ── */
+.hero-carousel { position: relative; width: 100%; max-width: 380px; height: 300px; }
+.hero-car-card {
+  position: absolute; inset: 0;
+  background: var(--card); border: 1px solid var(--border);
+  border-radius: 26px; padding: 32px 30px;
+  display: flex; flex-direction: column; align-items: flex-start; justify-content: center;
+  opacity: 0;
+  transition: opacity 0.35s ease;
+}
+.hero-car-card.active { opacity: 1; }
+.hero-car-ico {
+  width: 58px; height: 58px; border-radius: 16px; flex-shrink: 0;
+  background: linear-gradient(135deg, var(--sky), var(--cyan));
+  display: flex; align-items: center; justify-content: center;
+  margin-bottom: 20px;
+}
+.hero-car-ico svg { color: #04111f; display: block; }
+.hero-car-card h3 { font-family: 'Outfit', sans-serif; font-size: 21px; font-weight: 900; margin-bottom: 10px; }
+.hero-car-card p { font-size: 14px; color: #94a3b8; line-height: 1.6; margin-bottom: 16px; }
+.hero-car-tags { display: flex; flex-wrap: wrap; gap: 6px; }
+.hero-car-nav {
+  position: absolute; left: 0; right: 0; bottom: -38px;
+  display: flex; align-items: center; justify-content: center; gap: 14px;
+}
+.hero-car-dots { display: flex; gap: 6px; }
+.hero-car-dots span { width: 6px; height: 6px; border-radius: 99px; background: rgba(255,255,255,0.14); transition: all 0.3s; }
+.hero-car-dots span.active { width: 20px; background: var(--sky); }
+.hero-car-arrow {
+  width: 30px; height: 30px; border-radius: 50%; flex-shrink: 0;
+  background: rgba(255,255,255,0.05); border: 1px solid rgba(56,189,248,0.25);
+  display: flex; align-items: center; justify-content: center;
+  color: var(--sky); cursor: pointer;
+  transition: background 0.2s, border-color 0.2s, transform 0.15s;
+}
+.hero-car-arrow:hover { background: rgba(56,189,248,0.18); border-color: rgba(56,189,248,0.45); }
+.hero-car-arrow:active { transform: scale(0.92); }
 
 /* ── SECTION BASE ── */
 .sec { padding: 80px 24px; }
@@ -462,6 +516,33 @@ footer {
 .svc-ico svg, .seg-ico svg, .proc-icon svg, .ben-check svg { display: block; color: var(--sky); }
 .ben-callout-icon svg { display: block; }
 .cta-meta .i svg { display: block; }
+
+/* ── FLOATING WHATSAPP BUTTON ── */
+.float-wa {
+  position: fixed; right: 20px; bottom: 20px; z-index: 1000;
+  width: 58px; height: 58px; border-radius: 50%;
+  background: #ffffff;
+  display: flex; align-items: center; justify-content: center;
+  box-shadow: 0 8px 28px rgba(37,211,102,0.45);
+  opacity: 0; transform: translateY(16px) scale(0.9);
+  pointer-events: none;
+  transition: opacity 0.3s ease, transform 0.3s ease, box-shadow 0.2s;
+}
+.float-wa.show { opacity: 1; transform: translateY(0) scale(1); pointer-events: auto; }
+.float-wa:hover { box-shadow: 0 10px 36px rgba(37,211,102,0.6); transform: translateY(-2px) scale(1.04); }
+.float-wa::before {
+  content: ''; position: absolute; inset: -6px; border-radius: 50%;
+  border: 2px solid rgba(37,211,102,0.4);
+  animation: floatWaPulse 2.4s ease-out infinite;
+}
+@keyframes floatWaPulse {
+  0% { transform: scale(0.92); opacity: 0.8; }
+  70% { transform: scale(1.28); opacity: 0; }
+  100% { opacity: 0; }
+}
+@media (max-width: 640px) {
+  .float-wa { right: 16px; bottom: 16px; width: 52px; height: 52px; }
+}
 </style>
 </head>
 <body>
@@ -507,20 +588,71 @@ footer {
 <!-- HERO -->
 <section class="hero" id="hero">
   <div class="hero-glow"></div>
-  <div class="hero-badge"><span class="badge-dot"></span>Patos de Minas e região — MG</div>
-  <h1>Conexão forte,<br><em>câmeras seguras</em><br>e rede bem feita.</h1>
-  <p class="hero-desc">A <strong>HF Connect</strong> instala fibra óptica, Starlink, Wi-Fi, câmeras e redes estruturadas para casas, empresas e propriedades rurais.</p>
-  <div class="hero-btns">
-    <a href="https://wa.me/5534997099025?text=Ol%C3%A1!+Vim+pelo+site+da+HF+Connect+e+gostaria+de+um+or%C3%A7amento." target="_blank" class="btn-main"><svg class="btn-ic" width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.3" stroke-linecap="round" stroke-linejoin="round"><path d="M4 4h16v12H8l-4 4V4Z"/></svg> Solicitar orçamento</a>
-    <a href="#servicos" class="btn-outline">Ver serviços ↓</a>
+  <div class="hero-grid">
+    <div class="hero-content">
+      <div class="hero-badge"><span class="badge-dot"></span>Patos de Minas e região — MG</div>
+      <h1>Conexão forte,<br><em>câmeras seguras</em><br>e rede bem feita.</h1>
+      <p class="hero-desc">A <strong>HF Connect</strong> instala fibra óptica, Starlink, Wi-Fi, câmeras e redes estruturadas para casas, empresas e propriedades rurais.</p>
+      <div class="hero-btns">
+        <a href="https://wa.me/5534997099025?text=Ol%C3%A1!+Vim+pelo+site+da+HF+Connect+e+gostaria+de+um+or%C3%A7amento." target="_blank" class="btn-main"><svg class="btn-ic" width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.3" stroke-linecap="round" stroke-linejoin="round"><path d="M4 4h16v12H8l-4 4V4Z"/></svg> Solicitar orçamento</a>
+        <a href="#servicos" class="btn-outline">Ver serviços ↓</a>
+      </div>
+    </div>
+    <div class="hero-visual">
+      <div class="hero-carousel" id="heroCarousel">
+        <div class="hero-car-card active">
+          <div class="hero-car-ico"><svg width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M9 7V3M15 7V3M6 7h12l-1 5a5 5 0 0 1-10 0L6 7Z"/><path d="M10 17v1a2 2 0 0 0 4 0v-1"/></svg></div>
+          <h3>Fibra Óptica</h3>
+          <p>Rede rápida e estável, com acabamento limpo do início ao fim da instalação.</p>
+          <div class="hero-car-tags"><span class="tag">Fusão de fibra</span><span class="tag">Power meter</span></div>
+        </div>
+        <div class="hero-car-card">
+          <div class="hero-car-ico"><svg width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><rect x="3" y="9" width="13" height="7" rx="2"/><circle cx="9.5" cy="12.5" r="2"/><path d="M16 11l5-2v7l-5-2"/></svg></div>
+          <h3>Câmeras e CFTV</h3>
+          <p>Veja tudo pelo celular, onde você estiver, com imagem nítida dia e noite.</p>
+          <div class="hero-car-tags"><span class="tag">Acesso celular</span><span class="tag">Residencial</span></div>
+        </div>
+        <div class="hero-car-card">
+          <div class="hero-car-ico"><svg width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M12 2v3.5"/><path d="M5.5 9.5a6.5 6.5 0 0 1 13 0"/><path d="M8.3 9.5a3.7 3.7 0 0 1 7.4 0"/><circle cx="12" cy="9.5" r="1.3" fill="currentColor" stroke="none"/><path d="M12 11v11"/><path d="M8 22h8"/></svg></div>
+          <h3>Starlink</h3>
+          <p>Internet de alta velocidade mesmo nos lugares mais distantes da cidade.</p>
+          <div class="hero-car-tags"><span class="tag">Fazenda</span><span class="tag">Rede estável</span></div>
+        </div>
+        <div class="hero-car-card">
+          <div class="hero-car-ico"><svg width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M2 8.5a16 16 0 0 1 20 0"/><path d="M5 12.5a11 11 0 0 1 14 0"/><path d="M8.5 16.5a6 6 0 0 1 7 0"/><circle cx="12" cy="20" r="1" fill="currentColor" stroke="none"/></svg></div>
+          <h3>Wi-Fi Profissional</h3>
+          <p>Sinal forte em cada cômodo, sem zonas mortas ou quedas de conexão.</p>
+          <div class="hero-car-tags"><span class="tag">Mesh</span><span class="tag">Cobertura total</span></div>
+        </div>
+        <div class="hero-car-card">
+          <div class="hero-car-ico"><svg width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><rect x="3" y="4" width="18" height="6" rx="1.5"/><rect x="3" y="14" width="18" height="6" rx="1.5"/><path d="M7 7h.01"/><path d="M7 17h.01"/><path d="M11 7h4"/><path d="M11 17h4"/></svg></div>
+          <h3>Redes Cabeadas</h3>
+          <p>Infraestrutura organizada, pronta pra acompanhar o crescimento do negócio.</p>
+          <div class="hero-car-tags"><span class="tag">Rack organizado</span><span class="tag">Switches</span></div>
+        </div>
+        <div class="hero-car-card">
+          <div class="hero-car-ico"><svg width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M14.7 6.3a4 4 0 0 0-5.4 5.4L3 18v3h3l6.3-6.3a4 4 0 0 0 5.4-5.4l-2.1 2.1-2-2 2.1-2.1Z"/></svg></div>
+          <h3>Suporte Técnico</h3>
+          <p>Resolvemos rápido quando algo trava, sem enrolação e sem complicar.</p>
+          <div class="hero-car-tags"><span class="tag">Diagnóstico</span><span class="tag">Preventivo</span></div>
+        </div>
+        <div class="hero-car-nav">
+          <button type="button" class="hero-car-arrow" id="heroCarPrev" aria-label="Serviço anterior"><svg width="15" height="15" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round"><path d="M15 18l-6-6 6-6"/></svg></button>
+          <div class="hero-car-dots" id="heroCarDots"></div>
+          <button type="button" class="hero-car-arrow" id="heroCarNext" aria-label="Próximo serviço"><svg width="15" height="15" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round"><path d="M9 18l6-6-6-6"/></svg></button>
+        </div>
+      </div>
+    </div>
   </div>
-  <div class="trust-strip">
-    <div class="trust-item"><span class="trust-dot"></span>Fibra óptica</div>
-    <div class="trust-item"><span class="trust-dot"></span>Starlink</div>
-    <div class="trust-item"><span class="trust-dot"></span>Câmeras CFTV</div>
-    <div class="trust-item"><span class="trust-dot"></span>Wi-Fi mesh</div>
-    <div class="trust-item"><span class="trust-dot"></span>Zona rural</div>
-    <div class="trust-item"><span class="trust-dot"></span>Suporte técnico</div>
+  <div class="hero-trust-wrap">
+    <div class="trust-strip">
+      <div class="trust-item"><span class="trust-dot"></span>Fibra óptica</div>
+      <div class="trust-item"><span class="trust-dot"></span>Starlink</div>
+      <div class="trust-item"><span class="trust-dot"></span>Câmeras CFTV</div>
+      <div class="trust-item"><span class="trust-dot"></span>Wi-Fi mesh</div>
+      <div class="trust-item"><span class="trust-dot"></span>Zona rural</div>
+      <div class="trust-item"><span class="trust-dot"></span>Suporte técnico</div>
+    </div>
   </div>
 </section>
 
@@ -658,6 +790,14 @@ footer {
   </div>
 </footer>
 
+<!-- FLOATING WHATSAPP BUTTON -->
+<a href="https://wa.me/5534997099025?text=Ol%C3%A1!+Vim+pelo+site+da+HF+Connect+e+gostaria+de+um+or%C3%A7amento." target="_blank" class="float-wa" id="floatWa" aria-label="Chamar no WhatsApp">
+  <svg width="34" height="34" viewBox="0 0 32 32">
+    <path fill="#25D366" d="M16.04 3.2c-7.07 0-12.8 5.73-12.8 12.8 0 2.26.6 4.38 1.63 6.22L3.2 28.8l6.77-1.78a12.74 12.74 0 0 0 6.07 1.55h.01c7.07 0 12.8-5.73 12.8-12.8s-5.74-12.57-12.81-12.57z"/>
+    <path fill="#fff" d="M12.13 9.86c-.27-.6-.55-.61-.8-.62h-.68c-.24 0-.63.09-.96.44-.33.35-1.26 1.23-1.26 3s1.29 3.48 1.47 3.72c.18.24 2.5 4 6.19 5.45 3.06 1.2 3.68.96 4.35.9.67-.06 2.16-.88 2.46-1.74.3-.85.3-1.58.21-1.74-.09-.15-.33-.24-.69-.42-.36-.18-2.16-1.07-2.5-1.19-.33-.12-.57-.18-.82.18-.24.36-.93 1.19-1.14 1.43-.21.24-.42.27-.78.09-.36-.18-1.51-.56-2.87-1.77-1.06-.95-1.78-2.12-1.99-2.48-.21-.36-.02-.55.16-.73.16-.16.36-.42.54-.63.18-.21.24-.36.36-.6.12-.24.06-.45-.03-.63-.09-.18-.79-1.98-1.14-2.71z"/>
+  </svg>
+</a>
+
 <script>
 // Nav scroll
 const nav = document.getElementById('topnav');
@@ -699,11 +839,73 @@ function initCar(trackId, dotsId) {
 initCar('svcTrack','svcDots');
 initCar('segTrack','segDots');
 
+// Hero service carousel (auto-rotating + manual arrows)
+(function() {
+  const wrap = document.getElementById('heroCarousel');
+  if (!wrap) return;
+  const cards = wrap.querySelectorAll('.hero-car-card');
+  const dotsEl = document.getElementById('heroCarDots');
+  cards.forEach((_, i) => {
+    const d = document.createElement('span');
+    if (i === 0) d.classList.add('active');
+    dotsEl.appendChild(d);
+  });
+  const dots = dotsEl.querySelectorAll('span');
+  let idx = 0;
+  let timer;
+
+  function goTo(newIdx) {
+    // Hide current card instantly (no fade-out) to avoid overlap/ghosting
+    const current = cards[idx];
+    current.style.transition = 'none';
+    current.classList.remove('active');
+    void current.offsetWidth; // force reflow
+    current.style.transition = '';
+    dots[idx].classList.remove('active');
+
+    idx = (newIdx + cards.length) % cards.length;
+    cards[idx].classList.add('active');
+    dots[idx].classList.add('active');
+  }
+
+  function next() { goTo(idx + 1); }
+  function prev() { goTo(idx - 1); }
+
+  function resetTimer() {
+    clearInterval(timer);
+    timer = setInterval(next, 3200);
+  }
+
+  document.getElementById('heroCarNext').addEventListener('click', () => { next(); resetTimer(); });
+  document.getElementById('heroCarPrev').addEventListener('click', () => { prev(); resetTimer(); });
+
+  resetTimer();
+})();
+
 // Scroll reveal
 const ro = new IntersectionObserver(entries => {
   entries.forEach(e => { if (e.isIntersecting) { e.target.classList.add('in'); ro.unobserve(e.target); } });
 }, {threshold: 0.1});
 document.querySelectorAll('.reveal').forEach(el => ro.observe(el));
+
+// Floating WhatsApp button: show after scrolling past hero, hide when main CTA button is visible
+const floatWa = document.getElementById('floatWa');
+const ctaBtn = document.querySelector('.btn-wa');
+let ctaVisible = false;
+if (floatWa) {
+  const updateFloatWa = () => {
+    const pastHero = window.scrollY > 500;
+    floatWa.classList.toggle('show', pastHero && !ctaVisible);
+  };
+  window.addEventListener('scroll', updateFloatWa, {passive: true});
+  if (ctaBtn) {
+    const ctaObserver = new IntersectionObserver(entries => {
+      entries.forEach(e => { ctaVisible = e.isIntersecting; updateFloatWa(); });
+    }, {threshold: 0.3});
+    ctaObserver.observe(ctaBtn);
+  }
+  updateFloatWa();
+}
 </script>
 </body>
 </html>
