@@ -4,546 +4,347 @@
 <meta charset="UTF-8">
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
 <title>HF Connect — Fibra, Câmeras, Starlink e Wi-Fi em Patos de Minas</title>
-<meta name="description" content="HF Connect instala fibra óptica, câmeras CFTV, Starlink e Wi-Fi profissional para casas, empresas e propriedades rurais em Patos de Minas e região. Orçamento gratuito.">
+<meta name="description" content="HF Connect instala câmeras CFTV, Starlink e Wi-Fi para casas, empresas e propriedades rurais — e fibra óptica para empresas e condomínios em Patos de Minas e região. Orçamento gratuito.">
 <link rel="canonical" href="https://hf-connect.vercel.app/">
-
-<!-- Open Graph / WhatsApp / Facebook / Instagram -->
+<meta name="theme-color" content="#060e1a">
+<link rel="icon" type="image/png" sizes="32x32" href="images/favicon-32.png">
+<link rel="apple-touch-icon" href="images/favicon-180.png">
 <meta property="og:type" content="website">
 <meta property="og:url" content="https://hf-connect.vercel.app/">
-<meta property="og:title" content="HF Connect — Fibra, Câmeras, Starlink e Wi-Fi">
-<meta property="og:description" content="Instalação de fibra óptica, câmeras CFTV, Starlink e Wi-Fi profissional para casas, empresas e propriedades rurais em Patos de Minas e região.">
-<meta property="og:image" content="https://hf-connect.vercel.app/images/og-image.jpg">
-<meta property="og:image:width" content="1200">
-<meta property="og:image:height" content="630">
-<meta property="og:locale" content="pt_BR">
 <meta property="og:site_name" content="HF Connect">
-
-<!-- Twitter Card -->
+<meta property="og:title" content="HF Connect — Fibra, Câmeras, Starlink e Wi-Fi em Patos de Minas">
+<meta property="og:description" content="Câmeras CFTV, Starlink e Wi-Fi para casas, empresas e propriedades rurais — e fibra óptica para empresas e condomínios em Patos de Minas e região. Orçamento gratuito.">
+<meta property="og:image" content="https://hf-connect.vercel.app/images/og-image.jpg">
+<meta property="og:locale" content="pt_BR">
 <meta name="twitter:card" content="summary_large_image">
-<meta name="twitter:title" content="HF Connect — Fibra, Câmeras, Starlink e Wi-Fi">
-<meta name="twitter:description" content="Instalação de fibra óptica, câmeras CFTV, Starlink e Wi-Fi profissional para casas, empresas e propriedades rurais em Patos de Minas e região.">
+<meta name="twitter:title" content="HF Connect — Fibra, Câmeras, Starlink e Wi-Fi em Patos de Minas">
+<meta name="twitter:description" content="Câmeras CFTV, Starlink e Wi-Fi para casas, empresas e propriedades rurais — e fibra óptica para empresas e condomínios em Patos de Minas e região.">
 <meta name="twitter:image" content="https://hf-connect.vercel.app/images/og-image.jpg">
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Outfit:wght@600;700;800;900&family=Inter:wght@400;500;600&display=swap" rel="stylesheet">
+<style>
+/* ── BASE (mesma identidade do site atual) ── */
+*, *::before, *::after { margin:0; padding:0; box-sizing:border-box; }
+html { scroll-behavior:smooth; }
+body {
+  font-family:'Inter',sans-serif; font-size:16px; line-height:1.65;
+  background:#060e1a; color:#e2e8f0; overflow-x:hidden; min-width:320px;
+}
+a { text-decoration:none; color:inherit; }
+:root {
+  --sky:#38bdf8; --cyan:#06b6d4;
+  --dark:#060e1a; --card:#0b1829;
+  --border:rgba(255,255,255,0.08);
+  --green:#34d399; --max:1120px;
+}
+.wrap { max-width:var(--max); margin:0 auto; padding:0 24px; }
+@media (prefers-reduced-motion: reduce) {
+  html { scroll-behavior:auto; }
+  .reveal { opacity:1 !important; transform:none !important; transition:none !important; }
+  .marq-track { animation:none !important; }
+  .car-progress i { animation:none !important; }
+}
 
-<link rel="icon" type="image/png" sizes="32x32" href="images/favicon-32.png">
-<link rel="apple-touch-icon" sizes="180x180" href="images/favicon-180.png">
-<link href="https://fonts.googleapis.com/css2?family=Outfit:wght@400;500;600;700;800;900&family=Inter:wght@400;500;600&display=swap" rel="stylesheet">
+/* ── NAV ── */
+#topnav { position:sticky; top:0; z-index:999; background:transparent; border-bottom:1px solid transparent; transition:background .3s, border-color .3s; }
+#topnav.stuck { background:rgba(6,14,26,.9); border-color:var(--border); backdrop-filter:blur(20px); -webkit-backdrop-filter:blur(20px); }
+.nav-inner { max-width:var(--max); margin:0 auto; padding:0 24px; height:66px; display:flex; align-items:center; gap:14px; }
+.nav-logo { display:flex; align-items:center; gap:10px; margin-right:auto; }
+.nav-logo img { width:38px; height:38px; border-radius:11px; display:block; }
+.logo-name { font-family:'Outfit',sans-serif; font-weight:900; font-size:16px; line-height:1.12; }
+.logo-tagline { font-size:10px; color:#7dd3fc; font-weight:500; letter-spacing:.05em; }
+.nav-links { display:flex; gap:26px; margin-right:8px; }
+.nav-links a { font-size:14px; font-weight:500; color:#94a3b8; transition:color .2s; }
+.nav-links a:hover { color:var(--sky); }
+.nav-ig {
+  display:inline-flex; align-items:center; gap:6px;
+  border:1px solid var(--border); background:rgba(255,255,255,.04);
+  color:#cbd5e1; font-size:13px; font-weight:600;
+  padding:9px 15px; border-radius:11px; transition:border-color .2s, color .2s;
+}
+.nav-ig:hover { border-color:#e1306c; color:#f1a7c2; }
+.nav-btn {
+  background:linear-gradient(135deg,var(--sky),var(--cyan)); color:#04111f;
+  font-family:'Outfit',sans-serif; font-weight:800; font-size:13px;
+  padding:10px 19px; border-radius:11px; white-space:nowrap;
+  transition:opacity .2s, transform .15s;
+}
+.nav-btn:hover { opacity:.9; transform:translateY(-1px); }
+.nav-toggle { display:none; flex-direction:column; gap:5px; background:none; border:none; cursor:pointer; padding:5px; }
+.nav-toggle span { width:22px; height:2px; background:#e2e8f0; border-radius:2px; }
+.mobile-menu { display:none; flex-direction:column; background:rgba(6,14,26,.97); border-top:1px solid var(--border); padding:12px 24px 20px; }
+.mobile-menu.open { display:flex; }
+.mobile-menu a { padding:13px 0; font-size:15px; color:#94a3b8; border-bottom:1px solid var(--border); }
+.mobile-menu .mob-cta {
+  margin-top:14px; border-bottom:none; text-align:center;
+  background:linear-gradient(135deg,var(--sky),var(--cyan)); color:#04111f;
+  font-family:'Outfit',sans-serif; font-weight:800; padding:13px; border-radius:13px;
+}
+@media (max-width:900px) { .nav-links, .nav-ig { display:none; } .nav-toggle { display:flex; } }
+
+/* ── HERO ── */
+.hero { position:relative; overflow:hidden; padding:52px 24px 42px; }
+.hero-glow { position:absolute; top:-120px; left:50%; transform:translateX(-50%); width:900px; height:520px;
+  background:radial-gradient(ellipse at 50% 30%, rgba(56,189,248,.14), transparent 65%); pointer-events:none; }
+.hero-grid { max-width:var(--max); margin:0 auto; display:grid; grid-template-columns:1fr; gap:48px; align-items:center; text-align:center; position:relative; }
+.hero-content { display:flex; flex-direction:column; align-items:center; }
+.hero-visual { display:none; }
+@media (min-width:1024px) {
+  .hero-grid { grid-template-columns:1.05fr .95fr; gap:56px; text-align:left; }
+  .hero-content { align-items:flex-start; }
+  .hero-visual { display:flex; align-items:center; justify-content:center; }
+}
+.hero-badge {
+  display:inline-flex; align-items:center; gap:8px;
+  background:rgba(56,189,248,.09); border:1px solid rgba(56,189,248,.22);
+  border-radius:99px; padding:6px 14px; font-size:12.5px; font-weight:600; color:#bae6fd; margin-bottom:20px;
+}
+.badge-dot { width:7px; height:7px; background:var(--green); border-radius:50%; box-shadow:0 0 7px var(--green); }
+.hero h1 {
+  font-family:'Outfit',sans-serif; font-weight:900;
+  font-size:clamp(34px, 5.4vw, 58px); line-height:1.04; letter-spacing:-.02em; margin-bottom:16px;
+}
+.hero h1 em {
+  font-style:normal;
+  background:linear-gradient(90deg,var(--sky),#a5f3fc,var(--cyan));
+  -webkit-background-clip:text; -webkit-text-fill-color:transparent; background-clip:text;
+}
+.hero-desc { font-size:clamp(15px,1.8vw,17px); color:#94a3b8; max-width:580px; margin:0 auto 26px; }
+.hero-desc strong { color:#bae6fd; font-weight:600; }
+@media (min-width:1024px) { .hero-desc { margin-left:0; } }
+.hero-btns { display:flex; flex-wrap:wrap; gap:12px; justify-content:center; }
+@media (min-width:1024px) { .hero-btns { justify-content:flex-start; } }
+.btn-main {
+  background:linear-gradient(135deg,var(--sky),var(--cyan)); color:#04111f;
+  font-family:'Outfit',sans-serif; font-weight:800; font-size:16px;
+  padding:16px 30px; border-radius:14px; display:inline-flex; align-items:center; gap:9px;
+  box-shadow:0 8px 32px rgba(56,189,248,.25); transition:transform .15s, box-shadow .2s;
+}
+.btn-main:hover { transform:translateY(-2px); box-shadow:0 12px 40px rgba(56,189,248,.4); }
+.btn-outline {
+  border:1px solid rgba(255,255,255,.14); background:rgba(255,255,255,.04); color:#e2e8f0;
+  font-family:'Outfit',sans-serif; font-weight:700; font-size:16px;
+  padding:16px 30px; border-radius:14px; display:inline-flex; align-items:center; gap:8px;
+  transition:background .2s, border-color .2s;
+}
+.btn-outline:hover { background:rgba(255,255,255,.09); border-color:rgba(255,255,255,.3); }
+
+/* ── HERO CARROSSEL (modernizado: borda-gradiente, pausa no hover, barra de progresso) ── */
+.hero-carousel { position:relative; width:100%; max-width:370px; height:262px; }
+.hero-car-frame {
+  position:absolute; inset:0; border-radius:26px; padding:1px;
+  background:linear-gradient(140deg, rgba(56,189,248,.5), rgba(255,255,255,.06) 40%, rgba(6,182,212,.35));
+}
+.hero-car-inner { position:relative; width:100%; height:100%; border-radius:25px; background:rgba(11,24,41,.92); overflow:hidden; }
+.hero-car-card {
+  position:absolute; inset:0; padding:26px 28px;
+  display:flex; flex-direction:column; justify-content:center; align-items:flex-start;
+  opacity:0; transform:translateY(8px); transition:opacity .4s ease, transform .4s ease; pointer-events:none;
+}
+.hero-car-card.active { opacity:1; transform:translateY(0); pointer-events:auto; }
+.hero-car-ico {
+  width:46px; height:46px; border-radius:13px; margin-bottom:14px;
+  background:linear-gradient(135deg,var(--sky),var(--cyan));
+  display:flex; align-items:center; justify-content:center; color:#04111f;
+}
+.hero-car-card h3 { font-family:'Outfit',sans-serif; font-size:19px; font-weight:900; margin-bottom:7px; }
+.hero-car-card p { font-size:14.5px; color:#94a3b8; }
+.car-progress { position:absolute; left:28px; right:28px; bottom:18px; height:3px; border-radius:3px; background:rgba(255,255,255,.09); overflow:hidden; }
+.car-progress i { display:block; height:100%; width:100%; border-radius:3px; background:linear-gradient(90deg,var(--sky),var(--cyan));
+  transform-origin:left; animation:carbar 5.5s linear infinite; }
+@keyframes carbar { from { transform:scaleX(0); } to { transform:scaleX(1); } }
+.hero-carousel:hover .car-progress i { animation-play-state:paused; }
+.hero-car-nav { position:absolute; left:0; right:0; bottom:-36px; display:flex; align-items:center; justify-content:center; gap:14px; }
+.hero-car-dots { display:flex; gap:6px; }
+.hero-car-dots span { width:6px; height:6px; border-radius:99px; background:rgba(255,255,255,.14); transition:all .3s; }
+.hero-car-dots span.active { width:20px; background:var(--sky); }
+.hero-car-arrow {
+  width:32px; height:32px; border-radius:50%;
+  background:rgba(255,255,255,.05); border:1px solid rgba(56,189,248,.25);
+  display:flex; align-items:center; justify-content:center; color:var(--sky); cursor:pointer;
+  transition:background .2s, transform .15s;
+}
+.hero-car-arrow:hover { background:rgba(56,189,248,.18); }
+.hero-car-arrow:active { transform:scale(.92); }
+
+/* ── MARQUEE (substitui a faixa estática de confiança) ── */
+.marquee { border-top:1px solid var(--border); border-bottom:1px solid var(--border); overflow:hidden; padding:11px 0;
+  mask-image:linear-gradient(90deg, transparent, #000 12%, #000 88%, transparent);
+  -webkit-mask-image:linear-gradient(90deg, transparent, #000 12%, #000 88%, transparent); }
+.marq-track { display:flex; gap:44px; width:max-content; animation:marq 30s linear infinite; }
+.marquee:hover .marq-track { animation-play-state:paused; }
+@keyframes marq { to { transform:translateX(-50%); } }
+.marq-item { display:flex; align-items:center; gap:10px; font-family:'Outfit',sans-serif; font-size:14px; font-weight:700; color:#64748b; white-space:nowrap; }
+.marq-item i { width:5px; height:5px; border-radius:50%; background:var(--sky); }
+
+/* ── SEÇÕES ── */
+.sec { padding:56px 24px; }
+.sec-alt { background:rgba(255,255,255,.025); border-top:1px solid var(--border); border-bottom:1px solid var(--border); }
+.eyebrow { font-size:11px; font-weight:700; text-transform:uppercase; letter-spacing:.28em; color:var(--sky); margin-bottom:7px; }
+.sec-title { font-family:'Outfit',sans-serif; font-size:clamp(26px,3.6vw,38px); font-weight:900; line-height:1.1; letter-spacing:-.015em; margin-bottom:10px; }
+.sec-sub { font-size:15px; color:#64748b; max-width:540px; margin-bottom:30px; }
+
+/* ── SERVIÇOS: hierarquia (3 destaques + 3 compactos) ── */
+.svc-featured { display:grid; gap:12px; grid-template-columns:1fr; margin-bottom:12px; }
+@media (min-width:820px) { .svc-featured { grid-template-columns:repeat(3,1fr); } }
+.svc-card {
+  position:relative; border-radius:22px; padding:1px; overflow:hidden;
+  background:linear-gradient(160deg, rgba(56,189,248,.35), rgba(255,255,255,.05) 45%);
+  transition:transform .2s;
+}
+.svc-card:hover { transform:translateY(-4px); }
+.svc-in { border-radius:21px; background:var(--card); padding:22px; height:100%; }
+.svc-ico {
+  width:44px; height:44px; border-radius:13px; margin-bottom:13px;
+  background:rgba(56,189,248,.1); border:1px solid rgba(56,189,248,.18);
+  display:flex; align-items:center; justify-content:center; color:var(--sky);
+}
+.svc-card h3 { font-family:'Outfit',sans-serif; font-size:17.5px; font-weight:800; margin-bottom:6px; }
+.svc-card p { font-size:13.5px; color:#7c8ea3; margin-bottom:12px; }
+.svc-link { font-size:14px; font-weight:700; color:var(--sky); display:inline-flex; align-items:center; gap:6px; transition:gap .2s; }
+.svc-link:hover { gap:10px; }
+.svc-compact { display:grid; gap:12px; grid-template-columns:1fr; }
+@media (min-width:820px) { .svc-compact { grid-template-columns:repeat(3,1fr); } }
+.svc-mini {
+  display:flex; align-items:center; gap:16px;
+  background:var(--card); border:1px solid var(--border); border-radius:16px; padding:13px 16px;
+  transition:border-color .2s, transform .2s;
+}
+.svc-mini:hover { border-color:rgba(56,189,248,.3); transform:translateY(-2px); }
+.svc-mini .svc-ico { width:44px; height:44px; border-radius:12px; margin:0; flex-shrink:0; }
+.svc-mini h3 { font-family:'Outfit',sans-serif; font-size:15.5px; font-weight:800; margin-bottom:2px; }
+.svc-mini p { font-size:13px; color:#64748b; line-height:1.5; }
+
+/* ── ONDE ATUAMOS (compactado em uma faixa) ── */
+.seg-row { display:grid; gap:12px; grid-template-columns:1fr; }
+@media (min-width:820px) { .seg-row { grid-template-columns:repeat(3,1fr); } }
+.seg-item { display:flex; gap:14px; align-items:flex-start; padding:16px; border-radius:18px; background:var(--card); border:1px solid var(--border); transition:border-color .2s; }
+.seg-item:hover { border-color:rgba(56,189,248,.28); }
+.seg-item .svc-ico { width:46px; height:46px; border-radius:13px; margin:0; flex-shrink:0; }
+.seg-item h3 { font-family:'Outfit',sans-serif; font-size:16px; font-weight:800; margin-bottom:4px; }
+.seg-item p { font-size:13.5px; color:#64748b; line-height:1.55; }
+
+/* ── COMO FUNCIONA: linha do tempo horizontal ── */
+.timeline { position:relative; display:grid; gap:24px; grid-template-columns:1fr; }
+@media (min-width:820px) {
+  .timeline { grid-template-columns:repeat(4,1fr); gap:28px; }
+  .timeline::before { content:''; position:absolute; top:19px; left:calc(12.5% + 21px); right:calc(12.5% + 21px);
+    height:1px; background:linear-gradient(90deg, rgba(56,189,248,.05), rgba(56,189,248,.35), rgba(56,189,248,.05)); }
+}
+.tl-step { position:relative; }
+@media (min-width:820px) { .tl-step { text-align:center; } }
+.tl-num {
+  width:38px; height:38px; border-radius:50%; margin-bottom:11px;
+  background:var(--dark); border:1px solid rgba(56,189,248,.35);
+  display:inline-flex; align-items:center; justify-content:center;
+  font-family:'Outfit',sans-serif; font-weight:800; font-size:14px; color:var(--sky);
+  box-shadow:0 0 0 6px var(--dark); position:relative;
+}
+.tl-step h3 { font-family:'Outfit',sans-serif; font-size:16px; font-weight:800; margin-bottom:6px; }
+.tl-step p { font-size:13.5px; color:#64748b; max-width:230px; }
+@media (min-width:820px) { .tl-step p { margin:0 auto; } }
+
+/* ── DIFERENCIAIS ── */
+.ben-wrap { display:grid; gap:24px; align-items:start; grid-template-columns:1fr; }
+@media (min-width:820px) { .ben-wrap { grid-template-columns:1fr 1fr; } }
+.ben-left h2 { font-family:'Outfit',sans-serif; font-size:clamp(24px,3.2vw,34px); font-weight:900; line-height:1.12; letter-spacing:-.015em; margin-bottom:16px; }
+.ben-left h2 span { color:var(--sky); }
+.ben-left > p { font-size:15px; color:#64748b; margin-bottom:22px; }
+.ben-callout {
+  background:rgba(56,189,248,.07); border:1px solid rgba(56,189,248,.18);
+  border-radius:16px; padding:14px 16px; display:flex; gap:12px; align-items:flex-start;
+}
+.ben-callout-icon { width:40px; height:40px; flex-shrink:0; border-radius:11px;
+  background:linear-gradient(135deg,var(--sky),var(--cyan)); display:flex; align-items:center; justify-content:center; }
+.ben-callout strong { display:block; font-family:'Outfit',sans-serif; font-size:14px; font-weight:800; color:#bae6fd; margin-bottom:4px; }
+.ben-callout p { font-size:13px; color:#64748b; }
+.ben-chips { display:flex; flex-wrap:wrap; gap:10px; align-content:flex-start; }
+.ben-chip {
+  display:inline-flex; align-items:center; gap:9px;
+  background:var(--card); border:1px solid var(--border); border-radius:99px;
+  padding:9px 15px; font-size:13px; font-weight:500; color:#94a3b8; transition:border-color .2s, color .2s;
+}
+.ben-chip:hover { border-color:rgba(56,189,248,.3); color:#bae6fd; }
+.ben-chip svg { color:var(--sky); flex-shrink:0; }
+
+/* ── CTA ── */
+.cta-shell { border-radius:28px; padding:1px; background:linear-gradient(140deg, rgba(56,189,248,.45), rgba(255,255,255,.06) 45%, rgba(6,182,212,.35)); }
+.cta-box { background:linear-gradient(135deg,#0d2240,#091829); border-radius:27px; padding:42px 30px; text-align:center; position:relative; overflow:hidden; }
+.cta-box::before { content:''; position:absolute; top:-80px; right:-80px; width:260px; height:260px;
+  background:radial-gradient(circle, rgba(56,189,248,.12), transparent 70%); pointer-events:none; }
+.cta-badge {
+  display:inline-flex; align-items:center; gap:7px; position:relative;
+  background:rgba(56,189,248,.09); border:1px solid rgba(56,189,248,.2);
+  border-radius:99px; padding:6px 13px; font-size:12px; font-weight:600; color:#bae6fd; margin-bottom:14px;
+}
+.cta-box h2 { font-family:'Outfit',sans-serif; font-size:clamp(24px,3.4vw,34px); font-weight:900; line-height:1.15; letter-spacing:-.015em;
+  max-width:660px; margin:0 auto 16px; position:relative; }
+.cta-box > p { font-size:15px; color:#64748b; max-width:500px; margin:0 auto 22px; position:relative; }
+.btn-wa {
+  background:linear-gradient(135deg,var(--sky),var(--cyan)); color:#04111f;
+  font-family:'Outfit',sans-serif; font-weight:800; font-size:16px;
+  padding:17px 34px; border-radius:15px; display:inline-flex; align-items:center; gap:10px;
+  box-shadow:0 10px 36px rgba(56,189,248,.28); transition:transform .15s, box-shadow .2s; position:relative;
+}
+.btn-wa:hover { transform:translateY(-2px); box-shadow:0 14px 44px rgba(56,189,248,.42); }
+.cta-note { font-size:12.5px; color:#334155; margin-top:14px; position:relative; }
+
+/* ── FOOTER ── */
+footer { background:#030810; border-top:1px solid var(--border); padding:38px 24px 20px; }
+.footer-grid { max-width:var(--max); margin:0 auto 26px; display:grid; gap:26px; grid-template-columns:1fr; }
+@media (min-width:640px) { .footer-grid { grid-template-columns:1.5fr 1fr 1fr; } }
+.footer-logo-row { display:flex; align-items:center; gap:10px; margin-bottom:12px; }
+.footer-logo-row img { width:36px; height:36px; border-radius:10px; }
+.footer-brand-name { font-family:'Outfit',sans-serif; font-weight:900; font-size:16px; }
+.footer-desc { font-size:13px; color:#475569; max-width:270px; }
+.footer-col h4 { font-family:'Outfit',sans-serif; font-size:13px; font-weight:800; margin-bottom:14px; }
+.footer-col a, .footer-col span { display:flex; align-items:center; gap:8px; font-size:13px; color:#475569; margin-bottom:9px; transition:color .2s; }
+.footer-col a:hover { color:var(--sky); }
+.footer-bottom { max-width:var(--max); margin:0 auto; border-top:1px solid var(--border); padding-top:18px;
+  display:flex; flex-wrap:wrap; justify-content:space-between; gap:6px; font-size:12px; color:#334155; }
+
+/* ── WHATSAPP FLUTUANTE ── */
+.float-wa {
+  position:fixed; right:20px; bottom:20px; z-index:1000;
+  width:56px; height:56px; border-radius:50%; background:#fff;
+  display:flex; align-items:center; justify-content:center;
+  box-shadow:0 8px 28px rgba(37,211,102,.45);
+  opacity:0; transform:translateY(16px); pointer-events:none;
+  transition:opacity .3s, transform .3s;
+}
+.float-wa.show { opacity:1; transform:translateY(0); pointer-events:auto; }
+
+/* ── REVEAL ── */
+.reveal { opacity:0; transform:translateY(20px); transition:opacity .55s ease, transform .55s ease; }
+.reveal.in { opacity:1; transform:translateY(0); }
+</style>
 <script type="application/ld+json">
 {
   "@context": "https://schema.org",
   "@type": "LocalBusiness",
   "name": "HF Connect",
-  "image": "https://hf-connect.vercel.app/images/logo-hf.jpeg",
   "url": "https://hf-connect.vercel.app/",
-  "telephone": "+5534997099025",
-  "email": "higorferrer@gmail.com",
+  "image": "https://hf-connect.vercel.app/images/og-image.jpg",
+  "logo": "https://hf-connect.vercel.app/images/logo-hf.jpeg",
+  "description": "Instalação de câmeras CFTV, internet Starlink, redes Wi-Fi e fibra óptica para casas, empresas, condomínios e propriedades rurais em Patos de Minas e região.",
+  "telephone": "+55-34-99709-9025",
   "address": {
     "@type": "PostalAddress",
     "addressLocality": "Patos de Minas",
     "addressRegion": "MG",
     "addressCountry": "BR"
   },
-  "areaServed": "Patos de Minas e região",
-  "description": "Instalação de fibra óptica, câmeras CFTV, Starlink e Wi-Fi profissional para casas, empresas e propriedades rurais.",
+  "areaServed": {
+    "@type": "City",
+    "name": "Patos de Minas"
+  },
   "sameAs": [
-    "https://instagram.com/connect.hf"
-  ]
+    "https://www.instagram.com/connect.hf"
+  ],
+  "priceRange": "$$"
 }
 </script>
-<style>
-/* ── RESET & BASE ── */
-*, *::before, *::after { margin: 0; padding: 0; box-sizing: border-box; }
-html { scroll-behavior: smooth; font-size: 16px; }
-body {
-  font-family: 'Inter', sans-serif;
-  background: #060e1a;
-  color: #e2e8f0;
-  overflow-x: hidden;
-  line-height: 1.6;
-  min-width: 320px;
-}
-a { text-decoration: none; color: inherit; }
-
-/* ── VARIABLES ── */
-:root {
-  --sky: #38bdf8;
-  --cyan: #06b6d4;
-  --dark: #060e1a;
-  --card: #0b1829;
-  --border: rgba(255,255,255,0.08);
-  --green: #34d399;
-  --max: 1100px;
-}
-
-/* ── CONTAINER ── */
-.wrap { max-width: var(--max); margin: 0 auto; padding: 0 24px; }
-
-/* ── NAV ── */
-#topnav {
-  position: sticky; top: 0; z-index: 999;
-  background: transparent;
-  border-bottom: 1px solid transparent;
-  transition: background 0.3s, border-color 0.3s;
-}
-#topnav.stuck {
-  background: rgba(6,14,26,0.92);
-  border-color: var(--border);
-  backdrop-filter: blur(20px);
-  -webkit-backdrop-filter: blur(20px);
-}
-.nav-inner {
-  max-width: var(--max); margin: 0 auto; padding: 0 24px;
-  height: 64px;
-  display: flex; align-items: center; justify-content: space-between; gap: 16px;
-}
-.nav-logo { display: flex; align-items: center; gap: 10px; flex-shrink: 0; }
-.logo-box {
-  width: 38px; height: 38px;
-  border-radius: 11px;
-  display: flex; align-items: center; justify-content: center;
-  position: relative; flex-shrink: 0;
-  overflow: hidden;
-}
-.logo-box img { width: 100%; height: 100%; object-fit: cover; display: block; }
-.logo-box::after {
-  content: ''; position: absolute; top: -3px; right: -3px;
-  width: 9px; height: 9px; background: var(--green);
-  border-radius: 50%; border: 2px solid var(--dark);
-  box-shadow: 0 0 7px var(--green);
-}
-.logo-name { font-family: 'Outfit', sans-serif; font-weight: 900; font-size: 16px; line-height: 1.1; }
-.logo-tagline { font-size: 10px; color: #7dd3fc; font-weight: 500; letter-spacing: 0.05em; }
-.nav-links { display: flex; align-items: center; gap: 28px; }
-.nav-links a { font-size: 14px; font-weight: 500; color: #94a3b8; transition: color 0.2s; white-space: nowrap; }
-.nav-links a:hover { color: var(--sky); }
-.nav-btn {
-  background: linear-gradient(135deg, var(--sky), var(--cyan));
-  color: #04111f; font-family: 'Outfit', sans-serif;
-  font-weight: 800; font-size: 13px;
-  padding: 9px 18px; border-radius: 11px;
-  white-space: nowrap; flex-shrink: 0;
-  transition: opacity 0.2s, transform 0.15s;
-  display: inline-flex; align-items: center; gap: 6px;
-}
-.nav-btn:hover { opacity: 0.9; transform: scale(1.02); }
-/* mobile menu toggle */
-.nav-toggle {
-  display: none; flex-direction: column; gap: 5px;
-  background: none; border: none; cursor: pointer; padding: 4px; flex-shrink: 0;
-}
-.nav-toggle span {
-  display: block; width: 22px; height: 2px;
-  background: #e2e8f0; border-radius: 2px; transition: all 0.25s;
-}
-.mobile-menu {
-  display: none; flex-direction: column; gap: 0;
-  background: rgba(6,14,26,0.97); border-top: 1px solid var(--border);
-  padding: 16px 24px 20px;
-}
-.mobile-menu.open { display: flex; }
-.mobile-menu a {
-  padding: 12px 0; font-size: 15px; font-weight: 500;
-  color: #94a3b8; border-bottom: 1px solid var(--border); transition: color 0.2s;
-}
-.mobile-menu a:last-child { border-bottom: none; }
-.mobile-menu a:hover { color: var(--sky); }
-.mobile-menu .mob-cta {
-  margin-top: 16px;
-  background: linear-gradient(135deg, var(--sky), var(--cyan));
-  color: #04111f; font-family: 'Outfit', sans-serif; font-weight: 800;
-  font-size: 15px; padding: 13px; border-radius: 13px;
-  text-align: center; display: block; border-bottom: none;
-}
-
-@media (max-width: 768px) {
-  .nav-links { display: none; }
-  .nav-toggle { display: flex; }
-}
-
-/* ── HERO ── */
-.hero {
-  position: relative; overflow: hidden;
-  padding: 80px 24px 70px; text-align: center;
-}
-.hero-glow {
-  position: absolute; top: -100px; left: 50%; transform: translateX(-50%);
-  width: 800px; height: 500px;
-  background: radial-gradient(ellipse at 50% 30%, rgba(56,189,248,0.13), transparent 65%);
-  pointer-events: none;
-}
-.hero-grid {
-  max-width: var(--max); margin: 0 auto;
-  display: grid; grid-template-columns: 1fr; gap: 40px; align-items: center;
-}
-.hero-content { display: flex; flex-direction: column; align-items: center; }
-.hero-visual { display: none; }
-@media (min-width: 1024px) {
-  .hero-grid { grid-template-columns: 1.05fr 0.95fr; gap: 56px; text-align: left; }
-  .hero-content { align-items: flex-start; }
-  .hero-badge, .hero-btns { margin-left: 0; }
-  .hero-desc { margin-left: 0; margin-right: 0; }
-  .hero-btns { justify-content: flex-start; }
-  .hero-visual { display: flex; align-items: center; justify-content: center; position: relative; height: 420px; }
-}
-.hero-badge {
-  display: inline-flex; align-items: center; gap: 8px;
-  background: rgba(56,189,248,0.09); border: 1px solid rgba(56,189,248,0.22);
-  border-radius: 99px; padding: 6px 16px;
-  font-size: 13px; font-weight: 600; color: #bae6fd; margin-bottom: 28px;
-}
-.badge-dot { width: 7px; height: 7px; background: var(--green); border-radius: 50%; box-shadow: 0 0 7px var(--green); flex-shrink: 0; }
-.hero h1 {
-  font-family: 'Outfit', sans-serif;
-  font-size: clamp(36px, 6vw, 64px);
-  font-weight: 900; line-height: 1.04;
-  letter-spacing: -0.015em; margin-bottom: 20px;
-}
-.hero h1 em {
-  font-style: normal;
-  background: linear-gradient(90deg, var(--sky), #a5f3fc, var(--cyan));
-  -webkit-background-clip: text; -webkit-text-fill-color: transparent;
-  background-clip: text;
-}
-.hero-desc {
-  font-size: clamp(15px, 2vw, 19px); color: #94a3b8; line-height: 1.7;
-  max-width: 600px; margin: 0 auto 34px;
-}
-.hero-desc strong { color: #bae6fd; font-weight: 600; }
-.hero-btns {
-  display: flex; flex-wrap: wrap; gap: 12px; justify-content: center;
-  margin-bottom: 0;
-}
-.hero-content .hero-btns { margin-bottom: 0; }
-.hero-trust-wrap { max-width: var(--max); margin: 50px auto 0; }
-.btn-main {
-  background: linear-gradient(135deg, var(--sky), var(--cyan));
-  color: #04111f; font-family: 'Outfit', sans-serif;
-  font-weight: 800; font-size: 16px;
-  padding: 15px 28px; border-radius: 14px;
-  display: inline-flex; align-items: center; gap: 8px;
-  box-shadow: 0 8px 32px rgba(56,189,248,0.25);
-  transition: transform 0.15s, box-shadow 0.2s;
-}
-.btn-main:hover { transform: translateY(-2px); box-shadow: 0 12px 40px rgba(56,189,248,0.38); }
-.btn-outline {
-  border: 1px solid rgba(255,255,255,0.15); color: #e2e8f0;
-  font-family: 'Outfit', sans-serif; font-weight: 700; font-size: 16px;
-  padding: 15px 28px; border-radius: 14px;
-  display: inline-flex; align-items: center; gap: 8px;
-  background: rgba(255,255,255,0.04);
-  transition: background 0.2s, border-color 0.2s;
-}
-.btn-outline:hover { background: rgba(255,255,255,0.09); border-color: rgba(255,255,255,0.3); }
-.trust-strip {
-  display: flex; flex-wrap: wrap; justify-content: center;
-  gap: 10px 24px; padding-top: 36px;
-  border-top: 1px solid var(--border);
-}
-.trust-item { display: flex; align-items: center; gap: 8px; font-size: 13px; font-weight: 600; color: #475569; }
-.trust-dot { width: 5px; height: 5px; background: var(--sky); border-radius: 50%; flex-shrink: 0; }
-
-/* ── HERO VISUAL: SERVICE CAROUSEL ── */
-.hero-carousel { position: relative; width: 100%; max-width: 380px; height: 300px; }
-.hero-car-card {
-  position: absolute; inset: 0;
-  background: var(--card); border: 1px solid var(--border);
-  border-radius: 26px; padding: 32px 30px;
-  display: flex; flex-direction: column; align-items: flex-start; justify-content: center;
-  opacity: 0;
-  transition: opacity 0.35s ease;
-}
-.hero-car-card.active { opacity: 1; }
-.hero-car-ico {
-  width: 58px; height: 58px; border-radius: 16px; flex-shrink: 0;
-  background: linear-gradient(135deg, var(--sky), var(--cyan));
-  display: flex; align-items: center; justify-content: center;
-  margin-bottom: 20px;
-}
-.hero-car-ico svg { color: #04111f; display: block; }
-.hero-car-card h3 { font-family: 'Outfit', sans-serif; font-size: 21px; font-weight: 900; margin-bottom: 10px; }
-.hero-car-card p { font-size: 14px; color: #94a3b8; line-height: 1.6; margin-bottom: 16px; }
-.hero-car-tags { display: flex; flex-wrap: wrap; gap: 6px; }
-.hero-car-nav {
-  position: absolute; left: 0; right: 0; bottom: -38px;
-  display: flex; align-items: center; justify-content: center; gap: 14px;
-}
-.hero-car-dots { display: flex; gap: 6px; }
-.hero-car-dots span { width: 6px; height: 6px; border-radius: 99px; background: rgba(255,255,255,0.14); transition: all 0.3s; }
-.hero-car-dots span.active { width: 20px; background: var(--sky); }
-.hero-car-arrow {
-  width: 30px; height: 30px; border-radius: 50%; flex-shrink: 0;
-  background: rgba(255,255,255,0.05); border: 1px solid rgba(56,189,248,0.25);
-  display: flex; align-items: center; justify-content: center;
-  color: var(--sky); cursor: pointer;
-  transition: background 0.2s, border-color 0.2s, transform 0.15s;
-}
-.hero-car-arrow:hover { background: rgba(56,189,248,0.18); border-color: rgba(56,189,248,0.45); }
-.hero-car-arrow:active { transform: scale(0.92); }
-
-/* ── SECTION BASE ── */
-.sec { padding: 80px 24px; }
-.sec-alt { background: rgba(255,255,255,0.025); border-top: 1px solid var(--border); border-bottom: 1px solid var(--border); }
-.eyebrow { font-size: 11px; font-weight: 700; text-transform: uppercase; letter-spacing: 0.28em; color: var(--sky); margin-bottom: 10px; }
-.sec-title { font-family: 'Outfit', sans-serif; font-size: clamp(26px, 4vw, 42px); font-weight: 900; line-height: 1.1; letter-spacing: -0.015em; margin-bottom: 14px; }
-.sec-sub { font-size: 16px; color: #64748b; line-height: 1.7; max-width: 520px; margin-bottom: 40px; }
-
-/* ── CAROUSEL (mobile) / GRID (desktop) ── */
-.car-outer { overflow: hidden; margin: 0 -24px; }
-.car-track {
-  display: flex; gap: 14px; padding: 4px 24px 18px;
-  overflow-x: auto; scroll-snap-type: x mandatory;
-  scrollbar-width: none; -webkit-overflow-scrolling: touch;
-}
-.car-track::-webkit-scrollbar { display: none; }
-.car-slide { scroll-snap-align: start; flex-shrink: 0; }
-.dots { display: flex; justify-content: center; gap: 7px; margin-top: 16px; }
-.dot-btn {
-  width: 7px; height: 7px; border-radius: 99px;
-  background: rgba(255,255,255,0.14); border: none; cursor: pointer; padding: 0;
-  transition: all 0.25s;
-}
-.dot-btn.on { width: 22px; background: var(--sky); }
-
-/* On desktop, show grid instead of carousel */
-@media (min-width: 768px) {
-  .car-outer { overflow: visible; margin: 0; }
-  .car-track {
-    display: grid; overflow: visible; padding: 0;
-    scroll-snap-type: none;
-  }
-  .car-slide { width: auto !important; flex-shrink: 1; }
-  .dots { display: none; }
-  .svc-grid  { grid-template-columns: repeat(3, 1fr); gap: 16px; }
-  .seg-grid  { grid-template-columns: repeat(3, 1fr); gap: 16px; }
-  .test-grid { grid-template-columns: repeat(3, 1fr); gap: 16px; }
-}
-
-/* ── SERVICE CARD ── */
-.svc-slide { width: 270px; }
-.svc-card {
-  background: var(--card); border: 1px solid var(--border);
-  border-radius: 22px; padding: 24px; height: 100%;
-  transition: border-color 0.2s, transform 0.2s;
-}
-.svc-card:hover { border-color: rgba(56,189,248,0.32); transform: translateY(-3px); }
-.svc-ico {
-  width: 50px; height: 50px; border-radius: 14px;
-  background: rgba(56,189,248,0.08); border: 1px solid rgba(56,189,248,0.14);
-  display: flex; align-items: center; justify-content: center;
-  font-size: 22px; margin-bottom: 16px;
-}
-.svc-card h3 { font-family: 'Outfit', sans-serif; font-size: 17px; font-weight: 800; margin-bottom: 8px; }
-.svc-card p { font-size: 14px; color: #64748b; line-height: 1.65; margin-bottom: 14px; }
-.tags { display: flex; flex-wrap: wrap; gap: 5px; }
-.tag {
-  background: rgba(255,255,255,0.05); border: 1px solid rgba(255,255,255,0.1);
-  border-radius: 99px; padding: 3px 10px;
-  font-size: 11px; font-weight: 600; color: #94a3b8;
-}
-
-/* ── SEGMENT CARD ── */
-.seg-slide { width: 230px; }
-.seg-card {
-  background: var(--card); border: 1px solid var(--border);
-  border-radius: 22px; padding: 24px; height: 100%;
-  transition: transform 0.2s, border-color 0.2s;
-}
-.seg-card:hover { transform: translateY(-3px); border-color: rgba(255,255,255,0.18); }
-.seg-ico { font-size: 30px; margin-bottom: 14px; display: block; }
-.seg-card h3 { font-family: 'Outfit', sans-serif; font-size: 16px; font-weight: 800; margin-bottom: 8px; }
-.seg-card p { font-size: 14px; color: #64748b; line-height: 1.65; }
-
-/* ── PROCESS ── */
-.proc-grid {
-  display: grid; gap: 16px;
-  grid-template-columns: 1fr;
-}
-@media (min-width: 640px)  { .proc-grid { grid-template-columns: repeat(2, 1fr); } }
-@media (min-width: 1024px) { .proc-grid { grid-template-columns: repeat(4, 1fr); } }
-.proc-card {
-  background: var(--card); border: 1px solid var(--border);
-  border-radius: 22px; padding: 24px;
-}
-.proc-num { font-family: 'Outfit', sans-serif; font-size: 46px; font-weight: 900; color: rgba(56,189,248,0.18); line-height: 1; margin-bottom: 14px; }
-.proc-icon { font-size: 20px; margin-bottom: 8px; }
-.proc-card h3 { font-family: 'Outfit', sans-serif; font-size: 15px; font-weight: 800; margin-bottom: 8px; line-height: 1.3; }
-.proc-card p { font-size: 13px; color: #64748b; line-height: 1.65; }
-
-/* ── BENEFITS ── */
-.ben-wrap {
-  display: grid; gap: 30px; align-items: start;
-}
-@media (min-width: 768px) { .ben-wrap { grid-template-columns: 1fr 1fr; } }
-.ben-left h2 { font-family: 'Outfit', sans-serif; font-size: clamp(24px, 3.5vw, 38px); font-weight: 900; line-height: 1.15; letter-spacing: -0.015em; margin-bottom: 16px; }
-.ben-left h2 span { color: var(--sky); }
-.ben-left p { font-size: 15px; color: #64748b; line-height: 1.7; margin-bottom: 20px; }
-.ben-callout {
-  background: rgba(56,189,248,0.07); border: 1px solid rgba(56,189,248,0.18);
-  border-radius: 18px; padding: 18px 20px;
-  display: flex; align-items: flex-start; gap: 14px;
-}
-.ben-callout-icon {
-  width: 40px; height: 40px; flex-shrink: 0;
-  background: linear-gradient(135deg, var(--sky), var(--cyan));
-  border-radius: 11px; display: flex; align-items: center; justify-content: center;
-  font-size: 18px;
-}
-.ben-callout strong { display: block; font-family: 'Outfit', sans-serif; font-size: 14px; font-weight: 800; color: #bae6fd; margin-bottom: 4px; }
-.ben-callout p { font-size: 13px; color: #64748b; line-height: 1.6; margin: 0; }
-.ben-grid { display: grid; grid-template-columns: 1fr 1fr; gap: 10px; }
-.ben-item {
-  background: var(--card); border: 1px solid var(--border);
-  border-radius: 14px; padding: 14px;
-  display: flex; align-items: flex-start; gap: 10px;
-  transition: border-color 0.2s;
-}
-.ben-item:hover { border-color: rgba(56,189,248,0.25); }
-.ben-check { color: var(--sky); font-size: 15px; flex-shrink: 0; margin-top: 1px; }
-.ben-item span { font-size: 13px; color: #94a3b8; line-height: 1.5; font-weight: 500; }
-
-/* ── TESTIMONIAL CARD ── */
-.test-slide { width: 290px; }
-.test-card {
-  background: var(--card); border: 1px solid var(--border);
-  border-radius: 22px; padding: 22px; height: 100%;
-}
-.test-stars { color: #fbbf24; font-size: 14px; margin-bottom: 12px; letter-spacing: 2px; }
-.test-text { font-size: 14px; color: #94a3b8; line-height: 1.7; font-style: italic; margin-bottom: 18px; }
-.test-author { display: flex; align-items: center; gap: 10px; }
-.test-av {
-  width: 36px; height: 36px; border-radius: 50%; flex-shrink: 0;
-  background: linear-gradient(135deg, var(--sky), var(--cyan));
-  display: flex; align-items: center; justify-content: center;
-  font-family: 'Outfit', sans-serif; font-weight: 900; font-size: 12px; color: #04111f;
-}
-.test-name { font-family: 'Outfit', sans-serif; font-size: 13px; font-weight: 700; }
-.test-role { font-size: 11px; color: #475569; }
-
-/* ── CTA ── */
-.cta-box {
-  background: linear-gradient(135deg, #0d2240, #091829);
-  border: 1px solid rgba(56,189,248,0.2);
-  border-radius: 28px; padding: 60px 40px;
-  text-align: center; position: relative; overflow: hidden;
-}
-.cta-box::before {
-  content: ''; position: absolute; top: -80px; right: -80px;
-  width: 260px; height: 260px;
-  background: radial-gradient(circle, rgba(56,189,248,0.12), transparent 70%);
-  pointer-events: none;
-}
-.cta-box::after {
-  content: ''; position: absolute; bottom: -80px; left: -80px;
-  width: 220px; height: 220px;
-  background: radial-gradient(circle, rgba(6,182,212,0.09), transparent 70%);
-  pointer-events: none;
-}
-.cta-badge {
-  display: inline-flex; align-items: center; gap: 7px;
-  background: rgba(56,189,248,0.09); border: 1px solid rgba(56,189,248,0.2);
-  border-radius: 99px; padding: 6px 14px;
-  font-size: 12px; font-weight: 600; color: #bae6fd; margin-bottom: 20px;
-  position: relative; z-index: 1;
-}
-.cta-box h2 {
-  font-family: 'Outfit', sans-serif;
-  font-size: clamp(24px, 4vw, 38px); font-weight: 900;
-  line-height: 1.2; letter-spacing: -0.015em;
-  margin-bottom: 16px; position: relative; z-index: 1; max-width: 680px; margin-left: auto; margin-right: auto;
-}
-.cta-box > p {
-  font-size: 16px; color: #64748b; line-height: 1.7;
-  max-width: 500px; margin: 0 auto 28px;
-  position: relative; z-index: 1;
-}
-.cta-meta {
-  display: flex; flex-wrap: wrap; justify-content: center; gap: 14px 28px;
-  margin-bottom: 30px; position: relative; z-index: 1;
-}
-.cta-meta span { display: flex; align-items: center; gap: 7px; font-size: 14px; color: #475569; }
-.cta-meta .i { color: var(--sky); }
-.btn-wa {
-  background: linear-gradient(135deg, var(--sky), var(--cyan));
-  color: #04111f; font-family: 'Outfit', sans-serif;
-  font-weight: 800; font-size: 16px;
-  padding: 16px 34px; border-radius: 15px;
-  display: inline-flex; align-items: center; gap: 10px;
-  box-shadow: 0 10px 36px rgba(56,189,248,0.28);
-  transition: transform 0.15s, box-shadow 0.2s;
-  position: relative; z-index: 1;
-}
-.btn-wa:hover { transform: translateY(-2px); box-shadow: 0 14px 44px rgba(56,189,248,0.4); }
-.cta-note { font-size: 12px; color: #334155; margin-top: 12px; position: relative; z-index: 1; }
-
-/* ── FOOTER ── */
-footer {
-  background: #030810; border-top: 1px solid var(--border);
-  padding: 48px 24px 24px;
-}
-.footer-grid {
-  max-width: var(--max); margin: 0 auto;
-  display: grid; gap: 36px; margin-bottom: 36px;
-  grid-template-columns: 1fr;
-}
-@media (min-width: 640px) { .footer-grid { grid-template-columns: 1.5fr 1fr 1fr; } }
-.footer-logo-row { display: flex; align-items: center; gap: 10px; margin-bottom: 12px; }
-.footer-icon {
-  width: 36px; height: 36px; flex-shrink: 0;
-  border-radius: 10px; overflow: hidden;
-  display: flex; align-items: center; justify-content: center;
-}
-.footer-icon img { width: 100%; height: 100%; object-fit: cover; display: block; }
-.footer-brand-name { font-family: 'Outfit', sans-serif; font-weight: 900; font-size: 16px; }
-.footer-desc { font-size: 13px; color: #334155; line-height: 1.65; max-width: 260px; }
-.footer-col h4 { font-family: 'Outfit', sans-serif; font-size: 13px; font-weight: 800; margin-bottom: 14px; }
-.footer-col a, .footer-col span {
-  display: block; font-size: 13px; color: #334155;
-  margin-bottom: 9px; transition: color 0.2s;
-}
-.footer-col a:hover { color: var(--sky); }
-.footer-bottom {
-  max-width: var(--max); margin: 0 auto;
-  border-top: 1px solid var(--border); padding-top: 18px;
-  display: flex; flex-wrap: wrap; justify-content: space-between; gap: 6px;
-  font-size: 12px; color: #1e293b;
-}
-
-/* ── REVEAL ANIMATION ── */
-.reveal { opacity: 0; transform: translateY(22px); transition: opacity 0.55s ease, transform 0.55s ease; }
-.reveal.in { opacity: 1; transform: translateY(0); }
-
-/* ── INLINE ICON HELPER ── */
-.btn-ic { vertical-align: -3px; flex-shrink: 0; }
-.svc-ico svg, .seg-ico svg, .proc-icon svg, .ben-check svg { display: block; color: var(--sky); }
-.ben-callout-icon svg { display: block; }
-.cta-meta .i svg { display: block; }
-
-/* ── FLOATING WHATSAPP BUTTON ── */
-.float-wa {
-  position: fixed; right: 20px; bottom: 20px; z-index: 1000;
-  width: 58px; height: 58px; border-radius: 50%;
-  background: #ffffff;
-  display: flex; align-items: center; justify-content: center;
-  box-shadow: 0 8px 28px rgba(37,211,102,0.45);
-  opacity: 0; transform: translateY(16px) scale(0.9);
-  pointer-events: none;
-  transition: opacity 0.3s ease, transform 0.3s ease, box-shadow 0.2s;
-}
-.float-wa.show { opacity: 1; transform: translateY(0) scale(1); pointer-events: auto; }
-.float-wa:hover { box-shadow: 0 10px 36px rgba(37,211,102,0.6); transform: translateY(-2px) scale(1.04); }
-.float-wa::before {
-  content: ''; position: absolute; inset: -6px; border-radius: 50%;
-  border: 2px solid rgba(37,211,102,0.4);
-  animation: floatWaPulse 2.4s ease-out infinite;
-}
-@keyframes floatWaPulse {
-  0% { transform: scale(0.92); opacity: 0.8; }
-  70% { transform: scale(1.28); opacity: 0; }
-  100% { opacity: 0; }
-}
-@media (max-width: 640px) {
-  .float-wa { right: 16px; bottom: 16px; width: 52px; height: 52px; }
-}
-</style>
 </head>
 <body>
 
@@ -551,11 +352,11 @@ footer {
 <nav id="topnav">
   <div class="nav-inner">
     <a href="#hero" class="nav-logo">
-      <div class="logo-box"><img src="images/logo-hf.jpeg" alt="HF Connect"></div>
-      <div>
-        <div class="logo-name">HF Connect</div>
-        <div class="logo-tagline">Fibra · Câmeras · Starlink · Wi-Fi</div>
-      </div>
+      <img src="images/logo-hf.jpeg" alt="HF Connect">
+      <span>
+        <span class="logo-name">HF Connect</span><br>
+        <span class="logo-tagline">Fibra · Câmeras · Starlink · Wi-Fi</span>
+      </span>
     </a>
     <div class="nav-links">
       <a href="#servicos">Serviços</a>
@@ -563,25 +364,20 @@ footer {
       <a href="#processo">Como funciona</a>
       <a href="#contato">Contato</a>
     </div>
-    <a href="https://instagram.com/connect.hf" target="_blank" class="nav-btn" style="background:linear-gradient(135deg,#e1306c,#fd1d1d,#fcb045);margin-right:6px;">
-      <svg xmlns="http://www.w3.org/2000/svg" width="15" height="15" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round" style="vertical-align:-2px"><rect x="2" y="2" width="20" height="20" rx="5"/><circle cx="12" cy="12" r="5"/><circle cx="17.5" cy="6.5" r="1.2" fill="currentColor" stroke="none"/></svg>
+    <a href="https://instagram.com/connect.hf" target="_blank" rel="noopener" class="nav-ig">
+      <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.4" stroke-linecap="round" stroke-linejoin="round"><rect x="2" y="2" width="20" height="20" rx="5"/><circle cx="12" cy="12" r="5"/><circle cx="17.5" cy="6.5" r="1.1" fill="currentColor" stroke="none"/></svg>
       @connect.hf
     </a>
-    <a href="https://wa.me/5534997099025?text=Ol%C3%A1!+Vim+pelo+site+da+HF+Connect+e+gostaria+de+um+or%C3%A7amento." target="_blank" class="nav-btn"><svg class="btn-ic" width="15" height="15" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.3" stroke-linecap="round" stroke-linejoin="round"><path d="M4 4h16v12H8l-4 4V4Z"/></svg> Orçamento</a>
-    <button class="nav-toggle" id="menuToggle" aria-label="Menu">
-      <span></span><span></span><span></span>
-    </button>
+    <a href="https://wa.me/5534997099025?text=Ol%C3%A1!%20Vim%20pelo%20site%20da%20HF%20Connect%20e%20gostaria%20de%20um%20or%C3%A7amento." target="_blank" rel="noopener" class="nav-btn">Orçamento</a>
+    <button class="nav-toggle" id="menuToggle" aria-label="Menu"><span></span><span></span><span></span></button>
   </div>
   <div class="mobile-menu" id="mobileMenu">
     <a href="#servicos">Serviços</a>
     <a href="#solucoes">Soluções</a>
     <a href="#processo">Como funciona</a>
     <a href="#contato">Contato</a>
-    <a href="https://instagram.com/connect.hf" target="_blank" style="display:flex;align-items:center;gap:8px;">
-      <svg xmlns="http://www.w3.org/2000/svg" width="15" height="15" viewBox="0 0 24 24" fill="none" stroke="#e1306c" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round"><rect x="2" y="2" width="20" height="20" rx="5"/><circle cx="12" cy="12" r="5"/><circle cx="17.5" cy="6.5" r="1.2" fill="#e1306c" stroke="none"/></svg>
-      Instagram @connect.hf
-    </a>
-    <a href="https://wa.me/5534997099025?text=Ol%C3%A1!+Vim+pelo+site+da+HF+Connect+e+gostaria+de+um+or%C3%A7amento." target="_blank" class="mob-cta"><svg class="btn-ic" width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.3" stroke-linecap="round" stroke-linejoin="round"><path d="M4 4h16v12H8l-4 4V4Z"/></svg> Solicitar Orçamento</a>
+    <a href="https://instagram.com/connect.hf" target="_blank" rel="noopener">Instagram @connect.hf</a>
+    <a href="https://wa.me/5534997099025?text=Ol%C3%A1!%20Vim%20pelo%20site%20da%20HF%20Connect%20e%20gostaria%20de%20um%20or%C3%A7amento." target="_blank" rel="noopener" class="mob-cta">Solicitar Orçamento</a>
   </div>
 </nav>
 
@@ -592,50 +388,50 @@ footer {
     <div class="hero-content">
       <div class="hero-badge"><span class="badge-dot"></span>Patos de Minas e região — MG</div>
       <h1>Conexão forte,<br><em>câmeras seguras</em><br>e rede bem feita.</h1>
-      <p class="hero-desc">A <strong>HF Connect</strong> instala fibra óptica, Starlink, Wi-Fi, câmeras e redes estruturadas para casas, empresas e propriedades rurais.</p>
+      <p class="hero-desc">A <strong>HF Connect</strong> instala câmeras, Starlink, Wi-Fi e redes estruturadas para casas, empresas e propriedades rurais — e <strong>fibra óptica para empresas e condomínios</strong>.</p>
       <div class="hero-btns">
-        <a href="https://wa.me/5534997099025?text=Ol%C3%A1!+Vim+pelo+site+da+HF+Connect+e+gostaria+de+um+or%C3%A7amento." target="_blank" class="btn-main"><svg class="btn-ic" width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.3" stroke-linecap="round" stroke-linejoin="round"><path d="M4 4h16v12H8l-4 4V4Z"/></svg> Solicitar orçamento</a>
+        <a href="https://wa.me/5534997099025?text=Ol%C3%A1!%20Vim%20pelo%20site%20da%20HF%20Connect%20e%20gostaria%20de%20um%20or%C3%A7amento." target="_blank" rel="noopener" class="btn-main">
+          <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.3" stroke-linecap="round" stroke-linejoin="round"><path d="M4 4h16v12H8l-4 4V4Z"/></svg>
+          Solicitar orçamento
+        </a>
         <a href="#servicos" class="btn-outline">Ver serviços ↓</a>
       </div>
     </div>
     <div class="hero-visual">
       <div class="hero-carousel" id="heroCarousel">
-        <div class="hero-car-card active">
-          <div class="hero-car-ico"><svg width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M9 7V3M15 7V3M6 7h12l-1 5a5 5 0 0 1-10 0L6 7Z"/><path d="M10 17v1a2 2 0 0 0 4 0v-1"/></svg></div>
-          <h3>Fibra Óptica</h3>
-          <p>Rede rápida e estável, com acabamento limpo do início ao fim da instalação.</p>
-          <div class="hero-car-tags"><span class="tag">Fusão de fibra</span><span class="tag">Power meter</span></div>
-        </div>
-        <div class="hero-car-card">
-          <div class="hero-car-ico"><svg width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><rect x="3" y="9" width="13" height="7" rx="2"/><circle cx="9.5" cy="12.5" r="2"/><path d="M16 11l5-2v7l-5-2"/></svg></div>
-          <h3>Câmeras e CFTV</h3>
-          <p>Veja tudo pelo celular, onde você estiver, com imagem nítida dia e noite.</p>
-          <div class="hero-car-tags"><span class="tag">Acesso celular</span><span class="tag">Residencial</span></div>
-        </div>
-        <div class="hero-car-card">
-          <div class="hero-car-ico"><svg width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M12 2v3.5"/><path d="M5.5 9.5a6.5 6.5 0 0 1 13 0"/><path d="M8.3 9.5a3.7 3.7 0 0 1 7.4 0"/><circle cx="12" cy="9.5" r="1.3" fill="currentColor" stroke="none"/><path d="M12 11v11"/><path d="M8 22h8"/></svg></div>
-          <h3>Starlink</h3>
-          <p>Internet de alta velocidade mesmo nos lugares mais distantes da cidade.</p>
-          <div class="hero-car-tags"><span class="tag">Fazenda</span><span class="tag">Rede estável</span></div>
-        </div>
-        <div class="hero-car-card">
-          <div class="hero-car-ico"><svg width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M2 8.5a16 16 0 0 1 20 0"/><path d="M5 12.5a11 11 0 0 1 14 0"/><path d="M8.5 16.5a6 6 0 0 1 7 0"/><circle cx="12" cy="20" r="1" fill="currentColor" stroke="none"/></svg></div>
-          <h3>Wi-Fi Profissional</h3>
-          <p>Sinal forte em cada cômodo, sem zonas mortas ou quedas de conexão.</p>
-          <div class="hero-car-tags"><span class="tag">Mesh</span><span class="tag">Cobertura total</span></div>
-        </div>
-        <div class="hero-car-card">
-          <div class="hero-car-ico"><svg width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><rect x="3" y="4" width="18" height="6" rx="1.5"/><rect x="3" y="14" width="18" height="6" rx="1.5"/><path d="M7 7h.01"/><path d="M7 17h.01"/><path d="M11 7h4"/><path d="M11 17h4"/></svg></div>
-          <h3>Redes Cabeadas</h3>
-          <p>Infraestrutura organizada, pronta pra acompanhar o crescimento do negócio.</p>
-          <div class="hero-car-tags"><span class="tag">Rack organizado</span><span class="tag">Switches</span></div>
-        </div>
-        <div class="hero-car-card">
-          <div class="hero-car-ico"><svg width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M14.7 6.3a4 4 0 0 0-5.4 5.4L3 18v3h3l6.3-6.3a4 4 0 0 0 5.4-5.4l-2.1 2.1-2-2 2.1-2.1Z"/></svg></div>
-          <h3>Suporte Técnico</h3>
-          <p>Resolvemos rápido quando algo trava, sem enrolação e sem complicar.</p>
-          <div class="hero-car-tags"><span class="tag">Diagnóstico</span><span class="tag">Preventivo</span></div>
-        </div>
+        <div class="hero-car-frame"><div class="hero-car-inner" id="heroCarInner">
+          <div class="hero-car-card active">
+            <div class="hero-car-ico"><svg width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M9 7V3M15 7V3M6 7h12l-1 5a5 5 0 0 1-10 0L6 7Z"/><path d="M10 17v1a2 2 0 0 0 4 0v-1"/></svg></div>
+            <h3>Fibra Óptica</h3>
+            <p>Rede rápida e estável para empresas e condomínios, com acabamento limpo do início ao fim.</p>
+          </div>
+          <div class="hero-car-card">
+            <div class="hero-car-ico"><svg width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><rect x="3" y="9" width="13" height="7" rx="2"/><circle cx="9.5" cy="12.5" r="2"/><path d="M16 11l5-2v7l-5-2"/></svg></div>
+            <h3>Câmeras e CFTV</h3>
+            <p>Veja tudo pelo celular, onde você estiver, com imagem nítida dia e noite.</p>
+          </div>
+          <div class="hero-car-card">
+            <div class="hero-car-ico"><svg width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M12 2v3.5"/><path d="M5.5 9.5a6.5 6.5 0 0 1 13 0"/><path d="M8.3 9.5a3.7 3.7 0 0 1 7.4 0"/><circle cx="12" cy="9.5" r="1.3" fill="currentColor" stroke="none"/><path d="M12 11v11"/><path d="M8 22h8"/></svg></div>
+            <h3>Starlink</h3>
+            <p>Internet de alta velocidade mesmo nos lugares mais distantes da cidade.</p>
+          </div>
+          <div class="hero-car-card">
+            <div class="hero-car-ico"><svg width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M2 8.5a16 16 0 0 1 20 0"/><path d="M5 12.5a11 11 0 0 1 14 0"/><path d="M8.5 16.5a6 6 0 0 1 7 0"/><circle cx="12" cy="20" r="1" fill="currentColor" stroke="none"/></svg></div>
+            <h3>Wi-Fi Profissional</h3>
+            <p>Sinal forte em cada cômodo, sem zonas mortas ou quedas de conexão.</p>
+          </div>
+          <div class="hero-car-card">
+            <div class="hero-car-ico"><svg width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><rect x="3" y="4" width="18" height="6" rx="1.5"/><rect x="3" y="14" width="18" height="6" rx="1.5"/><path d="M7 7h.01"/><path d="M7 17h.01"/><path d="M11 7h4"/><path d="M11 17h4"/></svg></div>
+            <h3>Redes Cabeadas</h3>
+            <p>Infraestrutura organizada, pronta pra acompanhar o crescimento do negócio.</p>
+          </div>
+          <div class="hero-car-card">
+            <div class="hero-car-ico"><svg width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M14.7 6.3a4 4 0 0 0-5.4 5.4L3 18v3h3l6.3-6.3a4 4 0 0 0 5.4-5.4l-2.1 2.1-2-2 2.1-2.1Z"/></svg></div>
+            <h3>Suporte Técnico</h3>
+            <p>Resolvemos rápido quando algo trava, sem enrolação e sem complicar.</p>
+          </div>
+          <div class="car-progress"><i id="carBar"></i></div>
+        </div></div>
         <div class="hero-car-nav">
           <button type="button" class="hero-car-arrow" id="heroCarPrev" aria-label="Serviço anterior"><svg width="15" height="15" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round"><path d="M15 18l-6-6 6-6"/></svg></button>
           <div class="hero-car-dots" id="heroCarDots"></div>
@@ -644,75 +440,106 @@ footer {
       </div>
     </div>
   </div>
-  <div class="hero-trust-wrap">
-    <div class="trust-strip">
-      <div class="trust-item"><span class="trust-dot"></span>Fibra óptica</div>
-      <div class="trust-item"><span class="trust-dot"></span>Starlink</div>
-      <div class="trust-item"><span class="trust-dot"></span>Câmeras CFTV</div>
-      <div class="trust-item"><span class="trust-dot"></span>Wi-Fi mesh</div>
-      <div class="trust-item"><span class="trust-dot"></span>Zona rural</div>
-      <div class="trust-item"><span class="trust-dot"></span>Suporte técnico</div>
-    </div>
-  </div>
 </section>
 
-<!-- SERVICES -->
+<!-- MARQUEE -->
+<div class="marquee" aria-hidden="true">
+  <div class="marq-track" id="marqTrack">
+    <span class="marq-item"><i></i>Fibra óptica</span>
+    <span class="marq-item"><i></i>Starlink</span>
+    <span class="marq-item"><i></i>Câmeras CFTV</span>
+    <span class="marq-item"><i></i>Wi-Fi mesh</span>
+    <span class="marq-item"><i></i>Zona rural</span>
+    <span class="marq-item"><i></i>Suporte técnico</span>
+    <span class="marq-item"><i></i>Redes cabeadas</span>
+    <span class="marq-item"><i></i>Garantia de 8 meses</span>
+  </div>
+</div>
+
+<!-- SERVIÇOS -->
 <section class="sec" id="servicos">
   <div class="wrap">
     <p class="eyebrow reveal">Serviços</p>
     <h2 class="sec-title reveal">Soluções técnicas completas</h2>
     <p class="sec-sub reveal">Da instalação simples à estrutura completa — estabilidade, segurança e organização em cada projeto.</p>
-    <div class="reveal">
-      <div class="car-outer">
-        <div class="car-track svc-grid" id="svcTrack">
-          <div class="car-slide svc-slide"><div class="svc-card"><div class="svc-ico"><svg width="22" height="22" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M9 7V3M15 7V3M6 7h12l-1 5a5 5 0 0 1-10 0L6 7Z"/><path d="M10 17v1a2 2 0 0 0 4 0v-1"/></svg></div><h3>Fibra Óptica</h3><p>Fusão, conectorização, testes e organização de caixas ópticas com qualidade técnica.</p><div class="tags"><span class="tag">Fusão de fibra</span><span class="tag">Power meter</span><span class="tag">Organização</span></div></div></div>
-          <div class="car-slide svc-slide"><div class="svc-card"><div class="svc-ico"><svg width="22" height="22" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><rect x="3" y="9" width="13" height="7" rx="2"/><circle cx="9.5" cy="12.5" r="2"/><path d="M16 11l5-2v7l-5-2"/></svg></div><h3>Câmeras e CFTV</h3><p>DVR/NVR, acesso remoto pelo celular, cabeamento e posicionamento estratégico.</p><div class="tags"><span class="tag">Acesso celular</span><span class="tag">Residencial</span><span class="tag">Empresarial</span></div></div></div>
-          <div class="car-slide svc-slide"><div class="svc-card"><div class="svc-ico"><svg width="22" height="22" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M12 2v3.5"/><path d="M5.5 9.5a6.5 6.5 0 0 1 13 0"/><path d="M8.3 9.5a3.7 3.7 0 0 1 7.4 0"/><circle cx="12" cy="9.5" r="1.3" fill="currentColor" stroke="none"/><path d="M12 11v11"/><path d="M8 22h8"/></svg></div><h3>Starlink</h3><p>Instalação, posicionamento ideal, Wi-Fi e integração com câmeras e roteadores.</p><div class="tags"><span class="tag">Fazenda</span><span class="tag">Rede estável</span><span class="tag">Melhor cobertura</span></div></div></div>
-          <div class="car-slide svc-slide"><div class="svc-card"><div class="svc-ico"><svg width="22" height="22" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M2 8.5a16 16 0 0 1 20 0"/><path d="M5 12.5a11 11 0 0 1 14 0"/><path d="M8.5 16.5a6 6 0 0 1 7 0"/><circle cx="12" cy="20" r="1" fill="currentColor" stroke="none"/></svg></div><h3>Wi-Fi Profissional</h3><p>Análise de sinal, pontos de acesso, redes mesh e eliminação de zonas sem cobertura.</p><div class="tags"><span class="tag">Mesh</span><span class="tag">Cobertura total</span><span class="tag">Rede visita</span></div></div></div>
-          <div class="car-slide svc-slide"><div class="svc-card"><div class="svc-ico"><svg width="22" height="22" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><rect x="3" y="4" width="18" height="6" rx="1.5"/><rect x="3" y="14" width="18" height="6" rx="1.5"/><path d="M7 7h.01"/><path d="M7 17h.01"/><path d="M11 7h4"/><path d="M11 17h4"/></svg></div><h3>Redes Cabeadas</h3><p>Cabeamento estruturado, racks, switches, patch panels e identificação técnica.</p><div class="tags"><span class="tag">Rack organizado</span><span class="tag">Pontos de rede</span><span class="tag">Switches</span></div></div></div>
-          <div class="car-slide svc-slide"><div class="svc-card"><div class="svc-ico"><svg width="22" height="22" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M14.7 6.3a4 4 0 0 0-5.4 5.4L3 18v3h3l6.3-6.3a4 4 0 0 0 5.4-5.4l-2.1 2.1-2-2 2.1-2.1Z"/></svg></div><h3>Suporte Técnico</h3><p>Diagnóstico de falhas, manutenção preventiva e configuração de equipamentos.</p><div class="tags"><span class="tag">Diagnóstico</span><span class="tag">Preventivo</span><span class="tag">Correção</span></div></div></div>
-        </div>
+
+    <div class="svc-featured">
+      <div class="svc-card reveal"><div class="svc-in">
+        <div class="svc-ico"><svg width="22" height="22" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><rect x="3" y="9" width="13" height="7" rx="2"/><circle cx="9.5" cy="12.5" r="2"/><path d="M16 11l5-2v7l-5-2"/></svg></div>
+        <h3>Câmeras e CFTV</h3>
+        <p>DVR/NVR, acesso remoto pelo celular, cabeamento e posicionamento estratégico.</p>
+        <a class="svc-link" href="https://wa.me/5534997099025?text=Ol%C3%A1!%20Quero%20um%20or%C3%A7amento%20de%20c%C3%A2meras%20(CFTV)." target="_blank" rel="noopener">Orçamento de câmeras →</a>
+      </div></div>
+      <div class="svc-card reveal"><div class="svc-in">
+        <div class="svc-ico"><svg width="22" height="22" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M12 2v3.5"/><path d="M5.5 9.5a6.5 6.5 0 0 1 13 0"/><path d="M8.3 9.5a3.7 3.7 0 0 1 7.4 0"/><circle cx="12" cy="9.5" r="1.3" fill="currentColor" stroke="none"/><path d="M12 11v11"/><path d="M8 22h8"/></svg></div>
+        <h3>Starlink</h3>
+        <p>Instalação, posicionamento ideal, Wi-Fi e integração com câmeras e roteadores.</p>
+        <a class="svc-link" href="https://wa.me/5534997099025?text=Ol%C3%A1!%20Quero%20um%20or%C3%A7amento%20de%20instala%C3%A7%C3%A3o%20Starlink." target="_blank" rel="noopener">Orçamento de Starlink →</a>
+      </div></div>
+      <div class="svc-card reveal"><div class="svc-in">
+        <div class="svc-ico"><svg width="22" height="22" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M9 7V3M15 7V3M6 7h12l-1 5a5 5 0 0 1-10 0L6 7Z"/><path d="M10 17v1a2 2 0 0 0 4 0v-1"/></svg></div>
+        <h3>Fibra Óptica</h3>
+        <p>Fusão, conectorização, testes e organização de caixas ópticas — para empresas e condomínios.</p>
+        <a class="svc-link" href="https://wa.me/5534997099025?text=Ol%C3%A1!%20Quero%20um%20or%C3%A7amento%20de%20fibra%20%C3%B3ptica%20para%20empresa%2Fcondom%C3%ADnio." target="_blank" rel="noopener">Orçamento de fibra →</a>
+      </div></div>
+    </div>
+
+    <div class="svc-compact">
+      <div class="svc-mini reveal">
+        <div class="svc-ico"><svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M2 8.5a16 16 0 0 1 20 0"/><path d="M5 12.5a11 11 0 0 1 14 0"/><path d="M8.5 16.5a6 6 0 0 1 7 0"/><circle cx="12" cy="20" r="1" fill="currentColor" stroke="none"/></svg></div>
+        <div><h3>Wi-Fi Profissional</h3><p>Redes mesh e eliminação de zonas sem cobertura.</p></div>
       </div>
-      <div class="dots" id="svcDots"></div>
+      <div class="svc-mini reveal">
+        <div class="svc-ico"><svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><rect x="3" y="4" width="18" height="6" rx="1.5"/><rect x="3" y="14" width="18" height="6" rx="1.5"/><path d="M7 7h.01"/><path d="M7 17h.01"/><path d="M11 7h4"/><path d="M11 17h4"/></svg></div>
+        <div><h3>Redes Cabeadas</h3><p>Cabeamento estruturado, racks e identificação técnica.</p></div>
+      </div>
+      <div class="svc-mini reveal">
+        <div class="svc-ico"><svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M14.7 6.3a4 4 0 0 0-5.4 5.4L3 18v3h3l6.3-6.3a4 4 0 0 0 5.4-5.4l-2.1 2.1-2-2 2.1-2.1Z"/></svg></div>
+        <div><h3>Suporte Técnico</h3><p>Diagnóstico, manutenção preventiva e configuração.</p></div>
+      </div>
     </div>
   </div>
 </section>
 
-<!-- SEGMENTS -->
+<!-- ONDE ATUAMOS -->
 <section class="sec sec-alt" id="solucoes">
   <div class="wrap">
     <p class="eyebrow reveal">Onde atuamos</p>
     <h2 class="sec-title reveal">Casa, empresa e campo</h2>
     <p class="sec-sub reveal">Solução planejada para cada ambiente, distância e necessidade de segurança.</p>
-    <div class="reveal">
-      <div class="car-outer">
-        <div class="car-track seg-grid" id="segTrack">
-          <div class="car-slide seg-slide"><div class="seg-card"><span class="seg-ico"><svg width="28" height="28" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M3 11l9-7 9 7"/><path d="M5 10v9a1 1 0 0 0 1 1h4v-6h4v6h4a1 1 0 0 0 1-1v-9"/></svg></span><h3>Residências</h3><p>Internet forte em todos os cômodos, câmeras no celular e rede organizada para o dia a dia.</p></div></div>
-          <div class="car-slide seg-slide"><div class="seg-card"><span class="seg-ico"><svg width="28" height="28" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><rect x="4" y="3" width="16" height="18" rx="1"/><path d="M9 8h1"/><path d="M14 8h1"/><path d="M9 12h1"/><path d="M14 12h1"/><path d="M9 16h1"/><path d="M14 16h1"/><path d="M10 21v-4h4v4"/></svg></span><h3>Empresas</h3><p>Estrutura confiável para atendimento, câmeras, computadores, impressoras e sistemas.</p></div></div>
-          <div class="car-slide seg-slide"><div class="seg-card"><span class="seg-ico"><svg width="28" height="28" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M12 22V12"/><path d="M12 12c0-4 2-6 6-8-1 5-3 7-6 8Z"/><path d="M12 12c0-4-2-6-6-8 1 5 3 7 6 8Z"/><path d="M12 16.5c0-3 1.5-4.5 4.5-6-0.7 3.5-2 5-4.5 6Z"/><path d="M12 16.5c0-3-1.5-4.5-4.5-6 0.7 3.5 2 5 4.5 6Z"/></svg></span><h3>Fazendas e sítios</h3><p>Starlink, câmeras, Wi-Fi externo e monitoramento remoto da propriedade rural.</p></div></div>
-        </div>
+    <div class="seg-row">
+      <div class="seg-item reveal">
+        <div class="svc-ico"><svg width="21" height="21" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M3 11l9-7 9 7"/><path d="M5 10v9a1 1 0 0 0 1 1h4v-6h4v6h4a1 1 0 0 0 1-1v-9"/></svg></div>
+        <div><h3>Residências</h3><p>Internet forte em todos os cômodos, câmeras no celular e rede organizada.</p></div>
       </div>
-      <div class="dots" id="segDots"></div>
+      <div class="seg-item reveal">
+        <div class="svc-ico"><svg width="21" height="21" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><rect x="4" y="3" width="16" height="18" rx="1"/><path d="M9 8h1"/><path d="M14 8h1"/><path d="M9 12h1"/><path d="M14 12h1"/><path d="M9 16h1"/><path d="M14 16h1"/><path d="M10 21v-4h4v4"/></svg></div>
+        <div><h3>Empresas e condomínios</h3><p>Fibra, câmeras e estrutura confiável para atendimento e sistemas.</p></div>
+      </div>
+      <div class="seg-item reveal">
+        <div class="svc-ico"><svg width="21" height="21" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M12 22V12"/><path d="M12 12c0-4 2-6 6-8-1 5-3 7-6 8Z"/><path d="M12 12c0-4-2-6-6-8 1 5 3 7 6 8Z"/></svg></div>
+        <div><h3>Fazendas e sítios</h3><p>Starlink, câmeras, Wi-Fi externo e monitoramento remoto da propriedade.</p></div>
+      </div>
     </div>
   </div>
 </section>
 
-<!-- PROCESS -->
+<!-- COMO FUNCIONA -->
 <section class="sec" id="processo">
   <div class="wrap">
     <p class="eyebrow reveal">Como funciona</p>
     <h2 class="sec-title reveal">Do orçamento à entrega</h2>
     <p class="sec-sub reveal">Fluxo simples, transparente e sem surpresas.</p>
-    <div class="proc-grid">
-      <div class="proc-card reveal"><div class="proc-num">01</div><div class="proc-icon"><svg width="22" height="22" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M4 4h16v12H8l-4 4V4Z"/></svg></div><h3>Entendimento da necessidade</h3><p>Você explica o objetivo: melhorar internet, instalar câmeras, configurar Starlink ou montar uma rede.</p></div>
-      <div class="proc-card reveal"><div class="proc-num">02</div><div class="proc-icon"><svg width="22" height="22" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><circle cx="11" cy="11" r="7"/><path d="M21 21l-4.3-4.3"/></svg></div><h3>Avaliação técnica</h3><p>Análise do ambiente, pontos de instalação, sinal, equipamentos existentes e melhor solução.</p></div>
-      <div class="proc-card reveal"><div class="proc-num">03</div><div class="proc-icon"><svg width="22" height="22" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M13 2 3 14h8l-1 8 10-12h-8l1-8Z"/></svg></div><h3>Instalação organizada</h3><p>Execução com cuidado no acabamento, identificação, configuração e testes completos.</p></div>
-      <div class="proc-card reveal"><div class="proc-num">04</div><div class="proc-icon"><svg width="22" height="22" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><circle cx="12" cy="12" r="9"/><path d="M8.5 12.5l2.5 2.5 5-5"/></svg></div><h3>Entrega e orientação</h3><p>Tudo funcionando — você entende como usar, acessar e cuidar da estrutura instalada.</p></div>
+    <div class="timeline">
+      <div class="tl-step reveal"><span class="tl-num">01</span><h3>Entendimento</h3><p>Você explica o objetivo: internet, câmeras, Starlink ou rede.</p></div>
+      <div class="tl-step reveal"><span class="tl-num">02</span><h3>Avaliação técnica</h3><p>Análise do ambiente, sinal e melhor solução.</p></div>
+      <div class="tl-step reveal"><span class="tl-num">03</span><h3>Instalação</h3><p>Execução com cuidado no acabamento e testes completos.</p></div>
+      <div class="tl-step reveal"><span class="tl-num">04</span><h3>Entrega</h3><p>Tudo funcionando — e você sabendo usar e cuidar.</p></div>
     </div>
   </div>
 </section>
 
-<!-- BENEFITS -->
+<!-- DIFERENCIAIS -->
 <section class="sec sec-alt">
   <div class="wrap">
     <div class="ben-wrap">
@@ -728,13 +555,13 @@ footer {
           </div>
         </div>
       </div>
-      <div class="ben-grid reveal">
-        <div class="ben-item"><span class="ben-check"><svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round"><path d="M4 12l5 5L20 6"/></svg></span><span>Atendimento técnico, direto e transparente</span></div>
-        <div class="ben-item"><span class="ben-check"><svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round"><path d="M4 12l5 5L20 6"/></svg></span><span>Instalação limpa e pensada para manutenção</span></div>
-        <div class="ben-item"><span class="ben-check"><svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round"><path d="M4 12l5 5L20 6"/></svg></span><span>Residência, empresa e área rural</span></div>
-        <div class="ben-item"><span class="ben-check"><svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round"><path d="M4 12l5 5L20 6"/></svg></span><span>Acesso remoto configurado em câmeras</span></div>
-        <div class="ben-item"><span class="ben-check"><svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round"><path d="M4 12l5 5L20 6"/></svg></span><span>Rede preparada para expansão futura</span></div>
-        <div class="ben-item"><span class="ben-check"><svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round"><path d="M4 12l5 5L20 6"/></svg></span><span>Foco em estabilidade e bom acabamento</span></div>
+      <div class="ben-chips reveal">
+        <span class="ben-chip"><svg width="13" height="13" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.6" stroke-linecap="round" stroke-linejoin="round"><path d="M4 12l5 5L20 6"/></svg>Atendimento direto e transparente</span>
+        <span class="ben-chip"><svg width="13" height="13" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.6" stroke-linecap="round" stroke-linejoin="round"><path d="M4 12l5 5L20 6"/></svg>Instalação limpa e pensada para manutenção</span>
+        <span class="ben-chip"><svg width="13" height="13" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.6" stroke-linecap="round" stroke-linejoin="round"><path d="M4 12l5 5L20 6"/></svg>Residência, empresa e área rural</span>
+        <span class="ben-chip"><svg width="13" height="13" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.6" stroke-linecap="round" stroke-linejoin="round"><path d="M4 12l5 5L20 6"/></svg>Acesso remoto configurado em câmeras</span>
+        <span class="ben-chip"><svg width="13" height="13" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.6" stroke-linecap="round" stroke-linejoin="round"><path d="M4 12l5 5L20 6"/></svg>Rede preparada para expansão futura</span>
+        <span class="ben-chip"><svg width="13" height="13" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.6" stroke-linecap="round" stroke-linejoin="round"><path d="M4 12l5 5L20 6"/></svg>Garantia de 8 meses no serviço</span>
       </div>
     </div>
   </div>
@@ -743,17 +570,16 @@ footer {
 <!-- CTA -->
 <section class="sec" id="contato">
   <div class="wrap">
-    <div class="cta-box reveal">
-      <div class="cta-badge"><svg class="btn-ic" width="15" height="15" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.3" stroke-linecap="round" stroke-linejoin="round"><circle cx="12" cy="12" r="9"/><path d="M8.5 12.5l2.5 2.5 5-5"/></svg> Orçamento gratuito e sem compromisso</div>
+    <div class="cta-shell reveal"><div class="cta-box">
+      <div class="cta-badge"><svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.3" stroke-linecap="round" stroke-linejoin="round"><circle cx="12" cy="12" r="9"/><path d="M8.5 12.5l2.5 2.5 5-5"/></svg> Orçamento gratuito e sem compromisso</div>
       <h2>Precisa de internet melhor, câmeras ou rede organizada?</h2>
       <p>Envie uma mensagem contando o que precisa. A HF Connect te orienta no melhor caminho para sua casa, empresa ou fazenda.</p>
-      <div class="cta-meta">
-        <span><span class="i"><svg width="15" height="15" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.2" stroke-linecap="round" stroke-linejoin="round"><path d="M12 21s7-7.5 7-12a7 7 0 0 0-14 0c0 4.5 7 12 7 12Z"/><circle cx="12" cy="9" r="2.5"/></svg></span> Patos de Minas e região</span>
-        <span><span class="i"><svg width="15" height="15" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.2" stroke-linecap="round" stroke-linejoin="round"><circle cx="12" cy="12" r="9"/><path d="M12 7v5l3 3"/></svg></span> Atendimento com agendamento</span>
-      </div>
-      <a href="https://wa.me/5534997099025?text=Ol%C3%A1!+Vim+pelo+site+da+HF+Connect+e+gostaria+de+um+or%C3%A7amento." target="_blank" class="btn-wa"><svg class="btn-ic" width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.3" stroke-linecap="round" stroke-linejoin="round"><path d="M4 4h16v12H8l-4 4V4Z"/></svg> Chamar no WhatsApp · (34) 99709-9025</a>
+      <a href="https://wa.me/5534997099025?text=Ol%C3%A1!%20Vim%20pelo%20site%20da%20HF%20Connect%20e%20gostaria%20de%20um%20or%C3%A7amento." target="_blank" rel="noopener" class="btn-wa">
+        <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.3" stroke-linecap="round" stroke-linejoin="round"><path d="M4 4h16v12H8l-4 4V4Z"/></svg>
+        Chamar no WhatsApp · (34) 99709-9025
+      </a>
       <p class="cta-note">Sem compromisso · Resposta rápida</p>
-    </div>
+    </div></div>
   </div>
 </section>
 
@@ -762,8 +588,8 @@ footer {
   <div class="footer-grid">
     <div>
       <div class="footer-logo-row">
-        <div class="footer-icon"><img src="images/logo-hf.jpeg" alt="HF Connect"></div>
-        <div class="footer-brand-name">HF Connect</div>
+        <img src="images/logo-hf.jpeg" alt="HF Connect">
+        <span class="footer-brand-name">HF Connect</span>
       </div>
       <p class="footer-desc">Fibra, câmeras, Starlink e Wi-Fi para casas, empresas e fazendas em Patos de Minas e região.</p>
     </div>
@@ -774,138 +600,96 @@ footer {
       <a href="#servicos">Starlink</a>
       <a href="#servicos">Wi-Fi Profissional</a>
       <a href="#servicos">Redes cabeadas</a>
-      <a href="#servicos">Suporte técnico</a>
     </div>
     <div class="footer-col">
       <h4>Contato</h4>
-      <a href="https://wa.me/5534997099025?text=Ol%C3%A1!+Vim+pelo+site+da+HF+Connect+e+gostaria+de+um+or%C3%A7amento." target="_blank"><svg class="btn-ic" width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.3" stroke-linecap="round" stroke-linejoin="round"><path d="M4 4h16v12H8l-4 4V4Z"/></svg> (34) 99709-9025</a>
-      <a href="https://instagram.com/connect.hf" target="_blank"><svg class="btn-ic" width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="#e1306c" stroke-width="2.3" stroke-linecap="round" stroke-linejoin="round"><rect x="2" y="2" width="20" height="20" rx="5"/><circle cx="12" cy="12" r="5"/><circle cx="17.5" cy="6.5" r="1.2" fill="#e1306c" stroke="none"/></svg> @connect.hf</a>
-      <span><svg class="btn-ic" width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.2" stroke-linecap="round" stroke-linejoin="round"><path d="M12 21s7-7.5 7-12a7 7 0 0 0-14 0c0 4.5 7 12 7 12Z"/><circle cx="12" cy="9" r="2.5"/></svg> Patos de Minas — MG</span>
-      <span><svg class="btn-ic" width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.2" stroke-linecap="round" stroke-linejoin="round"><circle cx="12" cy="12" r="9"/><path d="M12 7v5l3 3"/></svg> Seg–Sáb, horário comercial</span>
+      <a href="https://wa.me/5534997099025?text=Ol%C3%A1!%20Vim%20pelo%20site%20da%20HF%20Connect%20e%20gostaria%20de%20um%20or%C3%A7amento." target="_blank" rel="noopener">
+        <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.3" stroke-linecap="round" stroke-linejoin="round"><path d="M4 4h16v12H8l-4 4V4Z"/></svg>(34) 99709-9025
+      </a>
+      <a href="https://instagram.com/connect.hf" target="_blank" rel="noopener">
+        <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="#e1306c" stroke-width="2.3" stroke-linecap="round" stroke-linejoin="round"><rect x="2" y="2" width="20" height="20" rx="5"/><circle cx="12" cy="12" r="5"/></svg>@connect.hf
+      </a>
+      <span><svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.2" stroke-linecap="round" stroke-linejoin="round"><path d="M12 21s7-7.5 7-12a7 7 0 0 0-14 0c0 4.5 7 12 7 12Z"/><circle cx="12" cy="9" r="2.5"/></svg>Patos de Minas — MG</span>
+      <span><svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.2" stroke-linecap="round" stroke-linejoin="round"><circle cx="12" cy="12" r="9"/><path d="M12 7v5l3 3"/></svg>Seg–Sáb, horário comercial</span>
     </div>
   </div>
   <div class="footer-bottom">
-    <span>© 2025 HF Connect — Todos os direitos reservados</span>
+    <span>© 2026 HF Connect — Todos os direitos reservados</span>
     <span>Patos de Minas, Minas Gerais</span>
   </div>
 </footer>
 
-<!-- FLOATING WHATSAPP BUTTON -->
-<a href="https://wa.me/5534997099025?text=Ol%C3%A1!+Vim+pelo+site+da+HF+Connect+e+gostaria+de+um+or%C3%A7amento." target="_blank" class="float-wa" id="floatWa" aria-label="Chamar no WhatsApp">
-  <svg width="34" height="34" viewBox="0 0 32 32">
+<!-- WHATSAPP FLUTUANTE -->
+<a href="https://wa.me/5534997099025?text=Ol%C3%A1!%20Vim%20pelo%20site%20da%20HF%20Connect%20e%20gostaria%20de%20um%20or%C3%A7amento." target="_blank" rel="noopener" class="float-wa" id="floatWa" aria-label="Chamar no WhatsApp">
+  <svg width="32" height="32" viewBox="0 0 32 32">
     <path fill="#25D366" d="M16.04 3.2c-7.07 0-12.8 5.73-12.8 12.8 0 2.26.6 4.38 1.63 6.22L3.2 28.8l6.77-1.78a12.74 12.74 0 0 0 6.07 1.55h.01c7.07 0 12.8-5.73 12.8-12.8s-5.74-12.57-12.81-12.57z"/>
     <path fill="#fff" d="M12.13 9.86c-.27-.6-.55-.61-.8-.62h-.68c-.24 0-.63.09-.96.44-.33.35-1.26 1.23-1.26 3s1.29 3.48 1.47 3.72c.18.24 2.5 4 6.19 5.45 3.06 1.2 3.68.96 4.35.9.67-.06 2.16-.88 2.46-1.74.3-.85.3-1.58.21-1.74-.09-.15-.33-.24-.69-.42-.36-.18-2.16-1.07-2.5-1.19-.33-.12-.57-.18-.82.18-.24.36-.93 1.19-1.14 1.43-.21.24-.42.27-.78.09-.36-.18-1.51-.56-2.87-1.77-1.06-.95-1.78-2.12-1.99-2.48-.21-.36-.02-.55.16-.73.16-.16.36-.42.54-.63.18-.21.24-.36.36-.6.12-.24.06-.45-.03-.63-.09-.18-.79-1.98-1.14-2.71z"/>
   </svg>
 </a>
 
 <script>
-// Nav scroll
+// Nav sticky
 const nav = document.getElementById('topnav');
-window.addEventListener('scroll', () => nav.classList.toggle('stuck', window.scrollY > 10), {passive:true});
+addEventListener('scroll', () => nav.classList.toggle('stuck', scrollY > 10), {passive:true});
 
-// Mobile menu
-document.getElementById('menuToggle').addEventListener('click', function() {
-  document.getElementById('mobileMenu').classList.toggle('open');
-});
-document.querySelectorAll('#mobileMenu a').forEach(a => {
-  a.addEventListener('click', () => document.getElementById('mobileMenu').classList.remove('open'));
-});
+// Menu mobile
+document.getElementById('menuToggle').addEventListener('click', () =>
+  document.getElementById('mobileMenu').classList.toggle('open'));
+document.querySelectorAll('#mobileMenu a').forEach(a =>
+  a.addEventListener('click', () => document.getElementById('mobileMenu').classList.remove('open')));
 
-// Carousel dots (only visible on mobile via CSS)
-function initCar(trackId, dotsId) {
-  const track = document.getElementById(trackId);
-  const dotsEl = document.getElementById(dotsId);
-  if (!track || !dotsEl) return;
-  const slides = track.querySelectorAll('.car-slide');
-  if (!slides.length) return;
-  slides.forEach((_, i) => {
-    const b = document.createElement('button');
-    b.className = 'dot-btn' + (i === 0 ? ' on' : '');
-    b.setAttribute('aria-label', 'Slide ' + (i+1));
-    b.addEventListener('click', () => slides[i].scrollIntoView({behavior:'smooth',block:'nearest',inline:'start'}));
-    dotsEl.appendChild(b);
-  });
-  const dotEls = dotsEl.querySelectorAll('.dot-btn');
-  const io = new IntersectionObserver(entries => {
-    entries.forEach(e => {
-      if (e.isIntersecting) {
-        const i = [...slides].indexOf(e.target);
-        dotEls.forEach((d, j) => d.classList.toggle('on', i === j));
-      }
-    });
-  }, {root: track, threshold: 0.55});
-  slides.forEach(s => io.observe(s));
-}
-initCar('svcTrack','svcDots');
-initCar('segTrack','segDots');
+// Marquee: duplica o conteúdo para loop contínuo
+const mt = document.getElementById('marqTrack');
+mt.innerHTML += mt.innerHTML;
 
-// Hero service carousel (auto-rotating + manual arrows)
+// Carrossel do hero: mais lento (5,5s), pausa no hover, barra de progresso
 (function() {
   const wrap = document.getElementById('heroCarousel');
   if (!wrap) return;
   const cards = wrap.querySelectorAll('.hero-car-card');
   const dotsEl = document.getElementById('heroCarDots');
+  const bar = document.getElementById('carBar');
+  const INTERVAL = 5500;
   cards.forEach((_, i) => {
     const d = document.createElement('span');
     if (i === 0) d.classList.add('active');
     dotsEl.appendChild(d);
   });
   const dots = dotsEl.querySelectorAll('span');
-  let idx = 0;
-  let timer;
+  let idx = 0, timer;
 
-  function goTo(newIdx) {
-    // Hide current card instantly (no fade-out) to avoid overlap/ghosting
-    const current = cards[idx];
-    current.style.transition = 'none';
-    current.classList.remove('active');
-    void current.offsetWidth; // force reflow
-    current.style.transition = '';
+  function goTo(n) {
+    cards[idx].classList.remove('active');
     dots[idx].classList.remove('active');
-
-    idx = (newIdx + cards.length) % cards.length;
+    idx = (n + cards.length) % cards.length;
     cards[idx].classList.add('active');
     dots[idx].classList.add('active');
+    bar.style.animation = 'none';
+    void bar.offsetWidth;
+    bar.style.animation = '';
   }
+  function resetTimer() { clearInterval(timer); timer = setInterval(() => goTo(idx + 1), INTERVAL); }
 
-  function next() { goTo(idx + 1); }
-  function prev() { goTo(idx - 1); }
-
-  function resetTimer() {
-    clearInterval(timer);
-    timer = setInterval(next, 3200);
-  }
-
-  document.getElementById('heroCarNext').addEventListener('click', () => { next(); resetTimer(); });
-  document.getElementById('heroCarPrev').addEventListener('click', () => { prev(); resetTimer(); });
-
+  document.getElementById('heroCarNext').addEventListener('click', () => { goTo(idx + 1); resetTimer(); });
+  document.getElementById('heroCarPrev').addEventListener('click', () => { goTo(idx - 1); resetTimer(); });
+  wrap.addEventListener('mouseenter', () => clearInterval(timer));
+  wrap.addEventListener('mouseleave', resetTimer);
   resetTimer();
 })();
 
 // Scroll reveal
-const ro = new IntersectionObserver(entries => {
-  entries.forEach(e => { if (e.isIntersecting) { e.target.classList.add('in'); ro.unobserve(e.target); } });
-}, {threshold: 0.1});
-document.querySelectorAll('.reveal').forEach(el => ro.observe(el));
+const io = new IntersectionObserver(es => es.forEach(e => {
+  if (e.isIntersecting) { e.target.classList.add('in'); io.unobserve(e.target); }
+}), {threshold:.12});
+document.querySelectorAll('.reveal').forEach(el => io.observe(el));
 
-// Floating WhatsApp button: show after scrolling past hero, hide when main CTA button is visible
+// WhatsApp flutuante
 const floatWa = document.getElementById('floatWa');
 const ctaBtn = document.querySelector('.btn-wa');
 let ctaVisible = false;
-if (floatWa) {
-  const updateFloatWa = () => {
-    const pastHero = window.scrollY > 500;
-    floatWa.classList.toggle('show', pastHero && !ctaVisible);
-  };
-  window.addEventListener('scroll', updateFloatWa, {passive: true});
-  if (ctaBtn) {
-    const ctaObserver = new IntersectionObserver(entries => {
-      entries.forEach(e => { ctaVisible = e.isIntersecting; updateFloatWa(); });
-    }, {threshold: 0.3});
-    ctaObserver.observe(ctaBtn);
-  }
-  updateFloatWa();
-}
+const upd = () => floatWa.classList.toggle('show', scrollY > 500 && !ctaVisible);
+addEventListener('scroll', upd, {passive:true});
+new IntersectionObserver(es => es.forEach(e => { ctaVisible = e.isIntersecting; upd(); }), {threshold:.3}).observe(ctaBtn);
 </script>
 </body>
 </html>
